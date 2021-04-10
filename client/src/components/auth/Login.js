@@ -7,8 +7,8 @@ const Login = ({ HandleLogin,  history }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    HandleLogin(user,history);
-  }
+    HandleLogin(user, history);
+  };
 
   return (
     <form>
@@ -17,7 +17,7 @@ const Login = ({ HandleLogin,  history }) => {
         autoFocus
         required
         name="email"
-        value="{user.email}"
+        value={user.email}
         placeholder='Email'
         onChange={(e, { value }) => setUser({...user, email:value })}
 
@@ -27,7 +27,7 @@ const Login = ({ HandleLogin,  history }) => {
         autoFocus
         required
         name="password"
-        value="{user.password}"
+        value={user.password}
         placeholder='Password'
         onChange={(e, { value }) => setUser({...user, password:value })}
         

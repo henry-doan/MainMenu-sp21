@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { AuthConsumer } from "../../providers/AuthProvider";
-
+// import {Navbar} from './react-bootstrap';
 import { Link, withRouter } from 'react-router-dom';
 
 const Navbar = ({user, handleLogout, location, history }) => {
@@ -40,7 +40,7 @@ const Navbar = ({user, handleLogout, location, history }) => {
  
   return (
     <div>
-      <menu pointing secondary>
+      <div pointing secondary>
         <Link to='/'>
           <li
             name='home'
@@ -49,7 +49,7 @@ const Navbar = ({user, handleLogout, location, history }) => {
           />
         </Link>
           { rightNavItems() }
-      </menu>
+      </div>
     </div>
   )
 }
