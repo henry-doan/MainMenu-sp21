@@ -6,8 +6,8 @@ const Register = ({ handleRegister, history }) => {
   const [user, setUser] = useState({
     email: '',
     password: '',
-    passwordConfirmation: '',
-  });
+    passwordConfirmation: ''
+  })
   
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,7 +21,7 @@ const Register = ({ handleRegister, history }) => {
   return (
     <>
       <header as='h1' textAlign='center'>Register</header>
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <input
           label="Email"
           required

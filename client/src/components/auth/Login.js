@@ -11,7 +11,8 @@ const Login = ({ HandleLogin,  history }) => {
   };
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
+      
       <input
         label="Email"
         autoFocus
