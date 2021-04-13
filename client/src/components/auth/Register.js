@@ -6,8 +6,8 @@ const Register = ({ handleRegister, history }) => {
   const [user, setUser] = useState({
     email: '',
     password: '',
-    passwordConfirmation: '',
-  });
+    passwordConfirmation: ''
+  })
   
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,7 +21,7 @@ const Register = ({ handleRegister, history }) => {
   return (
     <>
       <header as='h1' textAlign='center'>Register</header>
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <input
           label="Email"
           required
@@ -29,7 +29,7 @@ const Register = ({ handleRegister, history }) => {
           name='email'
           value={user.email}
           placeholder='Email'
-          onChange={(e, { value }) => setUser({ ...user, email: value })}
+          onChange={(e) => setUser({ ...user, email: e.target.value })}
         />
         <input
           label="Password"
@@ -38,7 +38,7 @@ const Register = ({ handleRegister, history }) => {
           value={user.password}
           placeholder='Password'
           type='password'
-          onChange={(e, { value }) => setUser({ ...user, password: value })}
+          onChange={(e) => setUser({ ...user, password: e.target.value })}
         />
         <input
           label="Password Confirmation"
@@ -47,7 +47,7 @@ const Register = ({ handleRegister, history }) => {
           value={user.passwordConfirmation}
           placeholder='Password Confirmation'
           type='password'
-          onChange={(e, { value }) => setUser({ ...user, passwordConfirmation: value })}
+          onChange={(e) => setUser({ ...user, passwordConfirmation: e.target.value })}
         />
         <div>
           <button type='submit'>Submit</button>

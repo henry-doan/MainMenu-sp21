@@ -11,7 +11,8 @@ const Login = ({ HandleLogin,  history }) => {
   };
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
+      
       <input
         label="Email"
         autoFocus
@@ -19,7 +20,7 @@ const Login = ({ HandleLogin,  history }) => {
         name="email"
         value={user.email}
         placeholder='Email'
-        onChange={(e, { value }) => setUser({...user, email:value })}
+        onChange={(e) => setUser({...user, email:e.target.value })}
 
       />
       <input
@@ -29,7 +30,8 @@ const Login = ({ HandleLogin,  history }) => {
         name="password"
         value={user.password}
         placeholder='Password'
-        onChange={(e, { value }) => setUser({...user, password:value })}
+        type='password'
+        onChange={(e) => setUser({...user, password:e.target.value })}
         
       />
       <button primary type='submit'>Submit</button>
