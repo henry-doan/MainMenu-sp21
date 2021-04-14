@@ -13,7 +13,7 @@ const AuthProvider = ({ children }) => {
         history.push("/");
       })
       .catch((err) => console.log(err));
-  }
+  };
 
   const handleLogin = (user, history) => {
     axios
@@ -25,7 +25,7 @@ const AuthProvider = ({ children }) => {
       .catch((res) => {
         console.log(res);
       })
-  }
+  };
 
   const handleLogout = (history) => {
     axios
@@ -37,7 +37,7 @@ const AuthProvider = ({ children }) => {
       .catch(res => {
         console.log(res);
       })
-  }
+  };
 
   return (
     <AuthContext.Provider

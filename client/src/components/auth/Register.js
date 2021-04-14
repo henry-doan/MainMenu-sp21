@@ -1,5 +1,9 @@
 import { useState } from 'react';
 import { AuthConsumer } from "../../providers/AuthProvider";
+import { Form, Image, Button } from "react-bootstrap";
+import { Container, Btn, IMG, LoginImgCont } from "../shared/StyledComponents";
+import Logo from "../images/Logo.png";
+
 
 
 const Register = ({ handleRegister, history }) => {
@@ -20,41 +24,59 @@ const Register = ({ handleRegister, history }) => {
   
   return (
     <>
-      <header as='h1' textAlign='center'>Register</header>
-      <form onSubmit={handleSubmit}>
-        <input
-          label="Email"
-          required
-          autoFocus
-          name='email'
-          value={user.email}
-          placeholder='Email'
-          onChange={(e) => setUser({ ...user, email: e.target.value })}
-        />
-        <input
-          label="Password"
-          required
-          name='password'
-          value={user.password}
-          placeholder='Password'
-          type='password'
-          onChange={(e) => setUser({ ...user, password: e.target.value })}
-        />
-        <input
-          label="Password Confirmation"
-          required
-          name='passwordConfirmation'
-          value={user.passwordConfirmation}
-          placeholder='Password Confirmation'
-          type='password'
-          onChange={(e) => setUser({ ...user, passwordConfirmation: e.target.value })}
-        />
-        <div>
-          <button type='submit'>Submit</button>
-        </div>
-      </form>
+      <Container>
+        <LoginImgCont>
+          <IMG src={Logo} alt="MainMenu Logo" fluid />
+        </LoginImgCont>
+        <h3 class="text-center">REGISTER</h3>
+        <br></br>
+        <Form onSubmit={handleSubmit}>
+          <Form.Group>
+            <Form.Label>Email</Form.Label>
+            <Form.Control
+              label="Email"
+              size="sm"
+              required
+              autoFocus
+              name="email"
+              value={user.email}
+              placeholder="test@test.com"
+              onChange={(e) => setUser({ ...user, email: e.target.value })}
+            ></Form.Control>
+            <br></br>
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              label="Password"
+              size="sm"
+              required
+              name="password"
+              value={user.password}
+              placeholder="*********"
+              type="password"
+              onChange={(e) => setUser({ ...user, password: e.target.value })}
+            ></Form.Control>
+            <br></br>
+            <Form.Label>Password Confirmation</Form.Label>
+            <Form.Control
+              label="Password Confirmation"
+              size="sm"
+              required
+              name="passwordConfirmation"
+              value={user.passwordConfirmation}
+              placeholder="*********"
+              type="password"
+              onChange={(e) =>
+                setUser({ ...user, passwordConfirmation: e.target.value })
+              }
+            ></Form.Control>
+          </Form.Group>
+          <Btn type="submit" size="lg" block>
+            Submit
+          </Btn>
+        </Form>
+      </Container>
     </>
-  )
+  );
 }
 
 const ConnectedRegister = (props) => (
