@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { useState } from "react";
 import { AuthConsumer } from "../../providers/AuthProvider";
+import { Form, Image, Button } from "react-bootstrap";
+import { Container, Btn, IMG } from "../shared/StyledComponents";
+import Logo from "../images/Logo.png";
 
-
-const Login = ({ handleLogin,  history }) => {
-  const [user, setUser] = useState({email: '', password: ''})
+const Login = ({ handleLogin, history }) => {
+  const [user, setUser] = useState({ email: "", password: "" });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -11,39 +13,45 @@ const Login = ({ handleLogin,  history }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      
-      <input
-        label="Email"
-        autoFocus
-        required
-        name="email"
-        value={user.email}
-        placeholder='Email'
-        onChange={(e) => setUser({...user, email:e.target.value })}
+    <Container>
+      <IMG src={Logo} alt="MainMenu Logo" fluid />
 
-      />
-      <input
-        label="Password"
-        autoFocus
-        required
-        name="password"
-        value={user.password}
-        placeholder='Password'
-        type='password'
-        onChange={(e) => setUser({...user, password:e.target.value })}
-        
-      />
-      <button primary type='submit'>Submit</button>
-      
-    </form>
-  )
-}
+      <Form onSubmit={handleSubmit}>
+        <Form.Group>
+        <Form.Label>Email</Form.Label>
+          <Form.Control
+            label="Email"
+            autoFocus
+            required
+            name="email"
+            value={user.email}
+            placeholder="test@test.com"
+            onChange={(e) => setUser({ ...user, email: e.target.value })}
+          ></Form.Control>
+          <br></br>
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            label="Password"
+            autoFocus
+            required
+            name="password"
+            value={user.password}
+            placeholder="*********"
+            type="password"
+            onChange={(e) => setUser({ ...user, password: e.target.value })}
+          ></Form.Control>
+          
+        </Form.Group>
+        <Btn primary type="submit" block>
+          Login
+        </Btn>
+      </Form>
+    </Container>
+  );
+};
 
 const ConnectedLogin = (props) => (
-  <AuthConsumer>
-    { auth => <Login {...props} {...auth} />}
-  </AuthConsumer>
-)
+  <AuthConsumer>{(auth) => <Login {...props} {...auth} />}</AuthConsumer>
+);
 
 export default ConnectedLogin;
