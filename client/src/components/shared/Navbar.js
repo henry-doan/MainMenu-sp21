@@ -1,37 +1,39 @@
 import { Component } from 'react';
 import { AuthConsumer } from "../../providers/AuthProvider";
-// import {Navbar} from './react-bootstrap';
+import { Nav } from 'react-bootstrap';
 import { Link, withRouter } from 'react-router-dom';
 
-const Navbar = ({user, handleLogout, location, history }) => {
+const Navigator = ({user, handleLogout, location, history }) => {
   
   const rightNavItems = () => {
     if (user) {
       return (
-        <li position='right'>
-          <Link
+        
+          <Nav.Link>Logout
+            <li  position='right'
             name='logout'
-            onClick={ () => handleLogout(history) }
-          />
-        </li>
+            onClick={ () => handleLogout(history) }>
+            </li>
+          </Nav.Link>
+        
       )
     } else {
       return (
         <ul position='right'>
-          <Link to='/login'>
+          <Nav.Link href='/login'>Login
             <li
               id='login'
               name='login'
               active={location.pathname === '/login'}
             />
-          </Link>
-          <Link to='/register'>
+          </Nav.Link>
+          <Nav.Link href='/register'>Register
             <li
               id='register'
               name='register'
               active={location.pathname === '/register'}
             />
-          </Link>
+          </Nav.Link>
         </ul>
       )
     }
@@ -57,7 +59,7 @@ const Navbar = ({user, handleLogout, location, history }) => {
 const ConnectedNavbar = (props) => (
   <AuthConsumer> 
     { auth => 
-      <Navbar { ...props } { ...auth } />
+      <Navigator { ...props } { ...auth } />
     }
   </AuthConsumer>
 )
