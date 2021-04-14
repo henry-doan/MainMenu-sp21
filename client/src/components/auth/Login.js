@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { AuthConsumer } from "../../providers/AuthProvider";
 
 
-const Login = ({ HandleLogin,  history }) => {
+const Login = ({ handleLogin,  history }) => {
   const [user, setUser] = useState({email: '', password: ''})
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    HandleLogin(user, history);
+    handleLogin(user, history);
   };
 
   return (
