@@ -8,7 +8,7 @@ import FetchUser from './components/auth/FetchUser';
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import Navigator from './components/shared/Navigator';
 import React,{useState} from 'react'
-
+import Restaurants from './restaurants/Restaurants';
 import {createGlobalStyle, ThemeProvider} from 'styled-components';
 import LightTheme from './themes/Light';
 import DarkTheme from './themes/Dark';
@@ -44,7 +44,8 @@ const App = () => {
         <Switch>
           <ProtectedRoute exact path="/" component={Home} />
           <Route exact path="/login" component={Login}/>
-          <Route exact path="/register" component={Register}/>
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/restaurants" component={Restaurants} />
         </Switch>
       </FetchUser>
     </ThemeProvider>

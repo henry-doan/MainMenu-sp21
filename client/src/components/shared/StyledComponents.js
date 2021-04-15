@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {Button, Image} from 'react-bootstrap';
+import {Button, Image, Card} from 'react-bootstrap';
 
 export const Container = styled.div `
 margin-top: 50px;
@@ -10,7 +10,7 @@ margin-bottom: 200px;
 `
 export const LoginImgCont = styled.div`
   
-  margin-left: 1%;
+  margin-left: 10%;
   margin-right: 10%;
   padding-top: 20px;
   
@@ -40,3 +40,24 @@ export const HomeIMG = styled(Image)`
   height: 50px;
 `;
 
+
+export const H3 = styled.h3`
+  font-weight: bold;
+
+`
+
+export const Tl = styled.div`
+margin-bottom: 0px;
+background-color: lightgrey;
+
+
+`
+export const Tst = styled(Card)`
+margin-bottom: 0px;
+border-radius: 0px;
+box-shadow: 0px 3px 3px grey;
+&:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+`
