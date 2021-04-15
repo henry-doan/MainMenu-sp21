@@ -9,6 +9,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import Navigator from './components/shared/Navigator';
 import React,{useState} from 'react'
 import Restaurants from './restaurants/Restaurants';
+import Restaurant from "./restaurants/Restaurant";
 import {createGlobalStyle, ThemeProvider} from 'styled-components';
 import LightTheme from './themes/Light';
 import DarkTheme from './themes/Dark';
@@ -33,23 +34,31 @@ const App = () => {
 
   return (
     <ThemeProvider
-      theme={{...theme,setTheme:() =>{
-        setTheme(color => color.id === 'light' ? DarkTheme : LightTheme )
-      }}}
+      theme={{
+        ...theme,
+        setTheme: () => {
+          setTheme((color) => (color.id === "light" ? DarkTheme : LightTheme));
+        },
+      }}
     >
-      <GlobalStyle/>
-      <Navigator theme={theme}/>
-      <ThemeNav theme={theme} changeDark={changeDark} changeLight={changeLight}/>
+      <GlobalStyle />
+      <Navigator theme={theme} />
+      <ThemeNav
+        theme={theme}
+        changeDark={changeDark}
+        changeLight={changeLight}
+      />
       <FetchUser>
         <Switch>
           <ProtectedRoute exact path="/" component={Home} />
-          <Route exact path="/login" component={Login}/>
+          <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/restaurants" component={Restaurants} />
+          <Route exact path="/restaurants/:id" component={Restaurant} />
         </Switch>
       </FetchUser>
     </ThemeProvider>
-  )
+  );
 }
 
 export default App

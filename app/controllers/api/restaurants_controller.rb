@@ -1,8 +1,8 @@
 class Api::RestaurantsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :set_restaurant, only: [:update, :show, :destroy]
 
   def index
-    render json: User.random_restaurant(current_user)
+    render json: Restaurant.all
   end
 
   def show
@@ -11,8 +11,8 @@ class Api::RestaurantsController < ApplicationController
   end
 
   def create 
-    @restaurant = Restaurant.new(restaurant_params)
-      if restaurant.save
+    @restaurant = current_user.restaurants.new(restaurant_params)
+      if @restaurant.save
         render json: @restaurant
       else
         render json: {errors: @restaurant.errors}, status: :unprocessable_entity
@@ -20,18 +20,26 @@ class Api::RestaurantsController < ApplicationController
   end
 
   def update
-    current_user
-    current_user.save
+   @restaurant = current_user.restaurants.find(params[:id])
+   if @restaurant.update(restaurant_params)
+    render json: @restaurant
+   else
+    render json: { errors: @restaurant.errors }, status: :unprocessable_entity
   end
+end
 
 
   def destroy
+    @restaurant = current_user.restaurants.find(params[:id])
     @restaurant.destroy
-    render json: {message: 'restaurant deleted'}
+    render json: { message: 'restaurant deleted' }
   end
 
   private
     def restaurant_params
       params.require(:restaurant).permit(:name, :image, :description)
     end
+     def set_restaurant
+    @restaurant = Restaurant.find(params[:id])
+  end
 end
