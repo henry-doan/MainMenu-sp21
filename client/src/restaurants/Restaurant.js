@@ -1,14 +1,14 @@
 import { Component } from "react";
 import axios from "axios";
-import {Card} from 'react-bootstrap';
+import {Card, Image, Container} from 'react-bootstrap';
 import { Tst, Tl } from '../components/shared/StyledComponents';
-import Logo from '../components/images/Logo.png';
+
 
 class Restaurant extends Component {
   state = { restaurant: [] };
   componentDidMount() {
     axios
-      .get("/api/restaurant")
+      .get("/api/restaurants")
       .then((res) => {
         this.setState({ restaurant: res.data });
       })
@@ -26,15 +26,17 @@ class Restaurant extends Component {
     const { id, name, description, image } = this.props;
     return (
       <>
-        <Tst style={{ width: "15rem" }}>
-          <Card.Img variant="top" src={Logo} />
-          <Tl>
-            <Card.Body>
-              <Card.Title>{name}</Card.Title>
-              <Card.Text>{description}</Card.Text>
-            </Card.Body>
-          </Tl>
-        </Tst>
+        <Container>
+          <Tst style={{ width: "15rem" }}>
+            <Card.Img variant="top" src={image} />
+            <Tl>
+              <Card.Body>
+                <Card.Title>{name}</Card.Title>
+                <Card.Text>{description}</Card.Text>
+              </Card.Body>
+            </Tl>
+          </Tst>
+        </Container>
       </>
     );
   }

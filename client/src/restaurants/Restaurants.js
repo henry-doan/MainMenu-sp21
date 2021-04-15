@@ -3,6 +3,7 @@ import axios from "axios";
 import RestaurantList from "./RestaurantList";
 import RestaurantForm from "./RestaurantForm";
 import { Tst } from 'styled-components';
+import { Container } from "react-bootstrap";
 
 class Restaurants extends Component {
   state = { restaurants: [] };
@@ -50,7 +51,10 @@ class Restaurants extends Component {
     const { restaurants } = this.state;
     return (
       <>
-        <h4>Restaurants</h4>
+        <Container>
+          <h4>Restaurants</h4>
+          <br></br>
+        </Container>
         <RestaurantList
           restaurants={restaurants}
           deleteRestaurant={this.deleteRestaurant}
