@@ -1,4 +1,4 @@
-import Home from './components/shared/Home';
+import Home from './components/shared/Dashboard';
 import NoMatch from './components/shared/NoMatch';
 import Navbar from './components/shared/Navbar';
 import Login from './components/auth/Login';
@@ -7,14 +7,15 @@ import { Switch, Route } from 'react-router-dom';
 import FetchUser from './components/auth/FetchUser';
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import Navigator from './components/shared/Navigator';
-import React,{useState} from 'react'
-import Restaurants from './restaurants/Restaurants';
-import Restaurant from "./restaurants/Restaurant";
-import {createGlobalStyle, ThemeProvider} from 'styled-components';
+import React, { useState } from 'react';
+import Restaurants from './components/restaurants/Restaurants';
+import Restaurant from "./components/restaurants/Restaurant";
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import LightTheme from './themes/Light';
 import DarkTheme from './themes/Dark';
 import ThemeNav from './components/shared/ThemeNav';
-
+// import Menus from './components/menus/Menu';
+import Dashboard from './components/shared/Dashboard';
 
 const GlobalStyle = createGlobalStyle`
     body{
@@ -50,17 +51,18 @@ const App = () => {
       />
       <FetchUser>
         <Switch>
-          <ProtectedRoute exact path="/" component={Home} />
+          <ProtectedRoute exact path="/" component={Dashboard} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/restaurants" component={Restaurants} />
           <Route exact path="/restaurants/:id" component={Restaurant} />
+          {/* <Route exact path="/menus" component={Menus} /> */}
         </Switch>
       </FetchUser>
     </ThemeProvider>
   );
 }
 
-export default App
+export default App;
 
 

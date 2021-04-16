@@ -1,7 +1,7 @@
 import { Component } from "react";
 import axios from "axios";
 import {Card, Image, Container} from 'react-bootstrap';
-import { Tst, Tl } from '../components/shared/StyledComponents';
+import { Tst, Tl } from '../shared/StyledComponents';
 
 
 class Restaurant extends Component {

@@ -61,3 +61,13 @@ box-shadow: 0px 3px 3px grey;
   text-decoration: underline;
 }
 `
+
+export const Section = styled.div`
+  width: 90vw;
+  margin: 0 auto;
+  max-width: 1170px;
+  display: grid;
+  gap: 3rem 2rem;
+  justify-items: center;
+
+`
