@@ -71,3 +71,11 @@ export const Section = styled.div`
   justify-items: center;
 
 `
+export const Photo = styled(Image)`
+  object-fit: cover;
+  height: 200px;
+  width: 100%;
+  border: 3px solid #eabc80;
+  border-radius: 4px;
+  display: block;
+`

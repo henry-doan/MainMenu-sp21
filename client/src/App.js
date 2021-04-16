@@ -14,7 +14,7 @@ import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import LightTheme from './themes/Light';
 import DarkTheme from './themes/Dark';
 import ThemeNav from './components/shared/ThemeNav';
-// import Menus from './components/menus/Menu';
+import Menus from './components/menus/Menus';
 import Dashboard from './components/shared/Dashboard';
 
 const GlobalStyle = createGlobalStyle`
@@ -56,7 +56,7 @@ const App = () => {
           <Route exact path="/register" component={Register} />
           <Route exact path="/restaurants" component={Restaurants} />
           <Route exact path="/restaurants/:id" component={Restaurant} />
-          {/* <Route exact path="/menus" component={Menus} /> */}
+          <Route exact path="/menus" component={Menus} />
         </Switch>
       </FetchUser>
     </ThemeProvider>
