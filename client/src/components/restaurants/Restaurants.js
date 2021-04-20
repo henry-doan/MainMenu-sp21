@@ -1,7 +1,6 @@
 import { Component } from "react";
 import axios from "axios";
 import RestaurantList from "./RestaurantList";
-import RestaurantForm from "./RestaurantForm";
 import { Tst } from 'styled-components';
 import { Container } from "react-bootstrap";
 

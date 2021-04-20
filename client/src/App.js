@@ -16,6 +16,10 @@ import DarkTheme from './themes/Dark';
 import ThemeNav from './components/shared/ThemeNav';
 import Menus from './components/menus/Menus';
 import Dashboard from './components/shared/Dashboard';
+import RestaurantShow from './components/restaurants/RestaurantShow';
+
+import RestaurantForm from './components/restaurants/RestaurantForm';
+
 
 const GlobalStyle = createGlobalStyle`
     body{
@@ -38,7 +42,7 @@ const App = () => {
       theme={{
         ...theme,
         setTheme: () => {
-          setTheme((color) => (color.id === "light" ? DarkTheme : LightTheme));
+          setTheme((color) => (color.id === 'light' ? DarkTheme : LightTheme))
         },
       }}
     >
@@ -51,16 +55,17 @@ const App = () => {
       />
       <FetchUser>
         <Switch>
-          <ProtectedRoute exact path="/" component={Dashboard} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/register" component={Register} />
-          <Route exact path="/restaurants" component={Restaurants} />
-          <Route exact path="/restaurants/:id" component={Restaurant} />
-          <Route exact path="/menus" component={Menus} />
+          <ProtectedRoute exact path='/' component={Dashboard} />
+          <Route exact path='/login' component={Login} />
+          <Route exact path='/register' component={Register} />
+          <Route exact path='/restaurants' component={Restaurants} />
+          <Route exact path='/restaurants/:id' component={RestaurantShow} />
+          <Route exact path='/menus' component={Menus} />
+          <Route exact path='/restaurant-form' component={RestaurantForm} />
         </Switch>
       </FetchUser>
     </ThemeProvider>
-  );
+  )
 }
 
 export default App;
