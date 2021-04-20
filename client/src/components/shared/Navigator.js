@@ -19,6 +19,7 @@ const Navigator = ({theme, user, handleLogout, location, history }) => {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="justify-content-end">
               <Nav.Link href="/restaurants">Restaurants</Nav.Link>
+              <Nav.Link href="/menus">Menus</Nav.Link>
               <Nav.Link onClick={() => handleLogout(history)}>Logout</Nav.Link>
             </Nav>
           </Navbar.Collapse>
@@ -39,6 +40,7 @@ const Navigator = ({theme, user, handleLogout, location, history }) => {
               <Nav.Link href="/restaurants">Restaurants</Nav.Link>
               <Nav.Link href="/register">Register</Nav.Link>
               <Nav.Link href="/login">Login</Nav.Link>
+              <Nav.Link href="/menus">Menus</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>

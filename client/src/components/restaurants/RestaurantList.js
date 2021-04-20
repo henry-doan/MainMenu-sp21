@@ -1,20 +1,29 @@
-import Restaurant from "./Restaurant";
-import { Container, Row, Col } from "react-bootstrap";
+import Restaurant from './Restaurant'
+import { Container, Row, Col } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
-const RestaurantList = ({ restaurants, deleteRestaurant, updateRestaurant }) => {
+
+const RestaurantList = ({
+  restaurants,
+  deleteRestaurant,
+  updateRestaurant,
+}) => {
   return (
     <>
       {restaurants.map((r) => (
         <>
+        
           <Container fluid>
             <Row>
               <Col>
-                <Restaurant
-                  key={r.id}
-                  {...r}
-                  deleteRestaurant={deleteRestaurant}
-                  updateRestaurant={updateRestaurant}
-                />
+                <Link to={`/restaurants/${r.id}`}>
+                  <Restaurant
+                    key={r.id}
+                    {...r}
+                    deleteRestaurant={deleteRestaurant}
+                    updateRestaurant={updateRestaurant}
+                  />
+                </Link>
               </Col>
             </Row>
           </Container>
@@ -22,7 +31,7 @@ const RestaurantList = ({ restaurants, deleteRestaurant, updateRestaurant }) => 
         </>
       ))}
     </>
-  );
-};
+  )
+}
 
-export default RestaurantList;
+export default RestaurantList
