@@ -20,8 +20,8 @@ class Api::RestaurantsController < ApplicationController
   end
 
   def update
-   @restaurant = current_user.restaurants.find(params[:id])
-   if @restaurant.update(restaurant_params)
+   @restaurant = Restaurant.find(params[:id])
+    if @restaurant.update(restaurant_params)
     render json: @restaurant
    else
     render json: { errors: @restaurant.errors }, status: :unprocessable_entity
@@ -30,8 +30,7 @@ end
 
 
   def destroy
-    @restaurant = current_user.restaurants.find(params[:id])
-    @restaurant.destroy
+    Restaurant.find(params[:id]).destroy
     render json: { message: 'restaurant deleted' }
   end
 

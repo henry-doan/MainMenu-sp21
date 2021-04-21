@@ -7,7 +7,7 @@ import Logo from "../images/Logo.png";
 
 
 const Login = ({ handleLogin, history }) => {
-  const [user, setUser] = useState({ email: "", password: "" });
+  const [user, setUser] = useState({ name: "", email: "", password: "" });
 
   const handleSubmit = (e) => {
     e.preventDefault();

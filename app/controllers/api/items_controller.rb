@@ -1,6 +1,9 @@
 class Api::ItemsController < ApplicationController
+  before_action :set_menu
+  before_action :set_item, only: [:show, :update, :destroy]
+  
   def index
-    render json: Item.all
+    render json: @menu.items.all
   end
 
   def show
@@ -9,7 +12,7 @@ class Api::ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new(item_params)
+    item = @menu.items.new(item_params)
     if @item.save
       render json: @item
     else
@@ -18,7 +21,7 @@ class Api::ItemsController < ApplicationController
   end
 
   def update
-    @item = Item.find(params[:id])
+    @item = @menu.items.find(params[:id])
     if @item.update(item_params)
       render json: @item
     else
@@ -27,14 +30,18 @@ class Api::ItemsController < ApplicationController
   end
 
   def destroy
-    Item.find(params[:id]).destroy
-    @item.destroy
+    @menu.items.find(params[:id]).destroy
+    # @item.destroy
     render json: { message: 'item deleted' }
   end
 
   private
   def item_params
     params.require(:item).permit(:name, :description, :price, :image )
+  end
+
+  def set_item
+    @item = @menu.items.find(params[:id])
   end
 
   def set_menu

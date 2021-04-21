@@ -1,19 +1,23 @@
-import { Component } from "react";
 import axios from "axios";
-import RestaurantList from "./RestaurantList";
-import { Tst } from "styled-components";
-import { Container } from "react-bootstrap";
+import React, { Component } from "react";
 
-class Restaurants extends Component {
+export const RestaurantContext = React.createContext();
+export const RestaurantConsumer = RestaurantContext.Consumer;
+
+class RestaurantProvider extends Component {
   state = { restaurants: [] };
+
   componentDidMount() {
     axios
       .get("/api/restaurants")
       .then((res) => {
         this.setState({ restaurants: res.data });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        //
+      });
   }
+
   addRestaurant = (restaurant) => {
     axios
       .post("/api/restaurants", { restaurant })
@@ -21,9 +25,12 @@ class Restaurants extends Component {
         const { restaurants } = this.state;
         this.setState({ restaurants: [...restaurants, res.data] });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+      });
   };
-  updateRestaurant = (id, restaurant) => {
+
+  updateRestaurant = (id, restaurant, history) => {
     axios
       .put(`/api/restaurants/${id}`, { restaurant })
       .then((res) => {
@@ -34,33 +41,40 @@ class Restaurants extends Component {
           return r;
         });
         this.setState({ restaurants });
+        history.push("/restaurants");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+      });
   };
-  deleteRestaurant = (id) => {
+
+  deleteRestaurant = (id, history) => {
     axios
       .delete(`/api/restaurants/${id}`)
       .then((res) => {
         const { restaurants } = this.state;
         this.setState({ restaurants: restaurants.filter((r) => r.id !== id) });
+        history.push("/restaurants");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+      });
   };
+
   render() {
-    const { restaurants } = this.state;
     return (
-      <>
-        <Container>
-          <h4>Restaurants</h4>
-          <br></br>
-        </Container>
-        <RestaurantList
-          restaurants={restaurants}
-          deleteRestaurant={this.deleteRestaurant}
-          updateRestaurant={this.updateRestaurant}
-        />
-      </>
+      <RestaurantContext.Provider
+        value={{
+          ...this.state,
+          addRestaurant: this.addRestaurant,
+          updateRestaurant: this.updateRestaurant,
+          deleteRestaurant: this.deleteRestaurant,
+        }}
+      >
+        {this.props.children}
+      </RestaurantContext.Provider>
     );
   }
 }
-export default Restaurants;
+
+export default RestaurantProvider;

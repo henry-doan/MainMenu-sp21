@@ -1,36 +1,36 @@
-import { Component } from 'react'
-import axios from 'axios'
-import { Card, Image, Container } from 'react-bootstrap'
-import { Tst, Tl } from '../shared/StyledComponents'
+import { Component } from "react";
+import axios from "axios";
+import { Card, Image, Container } from "react-bootstrap";
+import { Tst, Tl } from "../shared/StyledComponents";
 
 class Restaurant extends Component {
-  state = { restaurant: [] }
+  state = { restaurant: [] };
   // id = this.props.match.params.id
 
   componentDidMount() {
     axios
       .get(`/api/restaurants/`)
       .then((res) => {
-        this.setState({ restaurant: res.data })
-        console.log(this.state)
+        this.setState({ restaurant: res.data });
+        console.log(this.state);
       })
-      .catch((err) => console.log(err))
+      .catch((err) => console.log(err));
   }
 
-  state = { editing: false }
+  state = { editing: false };
   toggleForm = () => {
-    const { editing } = this.state
-    this.setState({ editing: !editing })
-  }
+    const { editing } = this.state;
+    this.setState({ editing: !editing });
+  };
 
   render() {
-    const { editing } = this.state
-    const { id, name, description, image } = this.props
+    const { editing } = this.state;
+    const { id, name, description, image } = this.props;
     return (
       <>
         <Container>
-          <Tst style={{ width: '15rem' }}>
-            <Card.Img variant='top' src={image} />
+          <Tst style={{ width: "15rem" }}>
+            <Card.Img variant="top" src={image} />
             <Tl>
               <Card.Body>
                 <Card.Title>{name}</Card.Title>
@@ -40,11 +40,11 @@ class Restaurant extends Component {
           </Tst>
         </Container>
       </>
-    )
+    );
   }
 }
 
-export default Restaurant
+export default Restaurant;
 
 // const Restaurant = ({name, description}) => {
 //   return(
