@@ -1,3 +1,4 @@
+
 5.times do |i|
   user = User.create(
     name: Faker::FunnyName.name,

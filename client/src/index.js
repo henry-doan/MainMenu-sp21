@@ -1,26 +1,33 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
 // import registerServiceWorker from './registerServiceWorker';
-import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from 'react-router-dom';
+import reportWebVitals from "./reportWebVitals";
+import { BrowserRouter } from "react-router-dom";
 import AuthProvider from "./providers/AuthProvider";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { initMiddleware } from 'devise-axios';
-
+import RestaurantProvider from "./providers/RestaurantProvider";
+import MenuProvider from "./providers/MenuProvider";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { initMiddleware } from "devise-axios";
+import ItemProvider from "./providers/ItemProvider";
 initMiddleware();
 
 ReactDOM.render(
   <React.StrictMode>
     <AuthProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <RestaurantProvider>
+        <MenuProvider>
+          <ItemProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+          </ItemProvider>
+        </MenuProvider>
+      </RestaurantProvider>
     </AuthProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
-
 
 // registerServiceWorker();
 

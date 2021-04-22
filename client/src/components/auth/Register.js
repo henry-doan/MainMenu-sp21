@@ -32,6 +32,18 @@ const Register = ({ handleRegister, history }) => {
         <br></br>
         <Form onSubmit={handleSubmit}>
           <Form.Group>
+          {/* <Form.Label>Name</Form.Label>
+          <Form.Control
+            label="Name"
+            size="sm"
+            autoFocus
+            required
+            name="name"
+            value={user.name}
+            placeholder="Name"
+            onChange={(e) => setUser({ ...user, email: e.target.value })}
+          ></Form.Control>
+          <br></br> */}
             <Form.Label>Email</Form.Label>
             <Form.Control
               label="Email"
