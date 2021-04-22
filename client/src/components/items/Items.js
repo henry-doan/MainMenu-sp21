@@ -6,7 +6,7 @@ import { Container } from "react-bootstrap";
 
 class Items extends Component {
   state = { items: [] };
-  id = this.props.match.params.id;
+  id = this.props.match.params.menu_id;
   componentDidMount() {
     console.log(this.props);
     axios
@@ -14,6 +14,7 @@ class Items extends Component {
       .get(`/api/menus/${this.id}/items/`)
       .then((res) => {
         this.setState({ items: res.data });
+        console.log(this.state.items)
       })
       .catch((err) => console.log(err));
   }

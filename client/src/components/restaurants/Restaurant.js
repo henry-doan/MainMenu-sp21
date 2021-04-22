@@ -9,7 +9,7 @@ class Restaurant extends Component {
 
   componentDidMount() {
     axios
-      .get(`/api/restaurants/`)
+      .get(`/api/restaurant`)
       .then((res) => {
         this.setState({ restaurant: res.data });
         console.log(this.state);
