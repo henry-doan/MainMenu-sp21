@@ -14,14 +14,13 @@ const MenuList = ({
           <Container fluid>
             <Row>
               <Col>
-                <Link to={`/menus/${m.id}/items`}>
+                
                   <Menu
                     key={m.id}
                     {...m}
                     deleteMenu={deleteMenu}
                     updateMenu={updateMenu}
                   />
-                </Link>
               </Col>
             </Row>
           </Container>

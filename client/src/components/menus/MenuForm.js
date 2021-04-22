@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import axios from 'axios'
+import { Btn } from "../shared/StyledComponents";
+
 
 
 
@@ -11,7 +13,6 @@ const MenuForm = () => {
     e.preventDefault()
     setMenu({ name: '', image: '', desc: '' })
     axios
-    
       .post(`/api/restaurants/:restaurant_id/menus`, {
         name: menu.name,
         description: menu.description,
@@ -67,7 +68,7 @@ const MenuForm = () => {
         value={menu.image}
         onChange={handleChange}
       />
-      <Button type='submit'>Submit</Button>
+      <Btn type='submit'>Submit</Btn>
     </Form>
   )
 }

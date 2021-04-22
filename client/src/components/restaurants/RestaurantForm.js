@@ -3,9 +3,12 @@ import { Form, Button, Container } from "react-bootstrap";
 import { Btn, IMG, LoginImgCont } from "../shared/StyledComponents";
 import axios from "axios";
 
-const RestaurantForm = () => {
-  const [restaurant, setRestaurant] = useState({
-    name: "",
+const RestaurantForm = ({restaurantProp}) => {
+  const [restaurant, setRestaurant] = useState( restaurantProp ? 
+    {name: restaurantProp.name, 
+      image: restaurantProp.image, 
+      description: restaurantProp.description} :
+    {name: "",
     image: "",
     description: "",
   });
@@ -13,6 +16,9 @@ const RestaurantForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setRestaurant({ name: "", image: "", desc: "" });
+    if(restaurantProp){
+      handleUpdate();
+    }else{
     axios
       .post(`/api/users/:user_id/restaurants`, {
         name: restaurant.name,
@@ -23,9 +29,11 @@ const RestaurantForm = () => {
         // console.log(res)
       })
       .catch((err) => console.log(err));
+    }
   };
 
   const handleChange = (e) => {
+    console.log(restaurantProp.id)
     setRestaurant({
       ...restaurant,
       [e.target.name]: e.target.value,
@@ -33,9 +41,9 @@ const RestaurantForm = () => {
   };
 
   const handleUpdate = (e) => {
-    //
+    
     axios
-      .put(`/api/users/:user_id/restaurants/`, {
+      .put(`/api/restaurants/${restaurantProp.id}`, {
         name: restaurant.name,
         description: restaurant.description,
         image: restaurant.image,

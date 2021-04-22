@@ -1,6 +1,6 @@
 import { IMG, HomeImgCont, HomeIMG, H3, Tl, Tst } from "./StyledComponents";
 import { Link } from "react-router-dom";
-import { Card, Container } from "react-bootstrap";
+import { Card, Container, Modal } from "react-bootstrap";
 import { Btn } from "../shared/StyledComponents";
 import Logo from "../images/Logo.png";
 import axios from "axios";
@@ -15,8 +15,11 @@ import Restaurant from "../restaurants/Restaurant";
 
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
-  const { restaurant, deleteRestaurant } = useContext(RestaurantContext);
+  const { restaurant, deleteRestaurant, updateRestaurant } = useContext(RestaurantContext);
   const [restaurants, setrestaurants] = useState([]);
+  const [toggle, setToggle] = useState(false)
+
+  const handleHide = () => setToggle(false);
 
   useEffect(() => {
     console.log(user);
@@ -26,8 +29,7 @@ const Dashboard = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  
-
+ 
   return (
     <>
       <HomeImgCont>
@@ -45,21 +47,28 @@ const Dashboard = () => {
               <Tl>
                 <Card.Body>
                   <Card.Title>
-                    <Link to={`/restaurants/${r.id}`}>{r.name}</Link>
+                    <Link to={`/restaurants/${r.id}/menus`}>{r.name}</Link>
                   </Card.Title>
                   <Card.Text>{r.description}</Card.Text>
 
                   <Btn onClick={() => deleteRestaurant(r.id)}>
                     <Icon.Trash />
                   </Btn>
-                  <Btn>
+                  <Btn onClick={() => setToggle(!toggle)}>
                     <Icon.PencilSquare />
                   </Btn>
+                  <Modal show={toggle} onHide={handleHide}>
+                    <Modal.Header closeButton>
+                      <Modal.Title>Edit Restaurant</Modal.Title>
+                    </Modal.Header>
+                  <RestaurantForm restaurantProp={r}/>
+                  </Modal>
                 </Card.Body>
               </Tl>
             </Tst>
           </>
         ))}
+        
 
         <br></br>
         <h3>My Favorites</h3>
