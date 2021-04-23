@@ -25,6 +25,7 @@ const Dashboard = () => {
   const { restaurant, deleteRestaurant, updateRestaurant } = useContext(
     RestaurantContext
   );
+  const [editRestaurant, setEditRestaurant] = useState({});
   const [restaurants, setrestaurants] = useState([]);
   const [toggle, setToggle] = useState(false);
 
@@ -38,6 +39,15 @@ const Dashboard = () => {
       .catch((err) => console.log(err));
   }, []);
 
+  const handleEdit = (restaurant) => {
+    setToggle(!toggle);
+    setEditRestaurant(restaurant);
+
+  }
+  const addRestaurant = (restaurant) =>{
+    //axios call here
+
+  }
   return (
     <>
       <HomeImgCont>
@@ -47,7 +57,7 @@ const Dashboard = () => {
         <br></br>
         <H3>Add a Restaurant</H3>
         <br></br>
-        <RestaurantForm />
+        <RestaurantForm addRestaurant={addRestaurant}/>
         <br></br>
         <H3>My Menus</H3>
         <br></br>
@@ -67,16 +77,10 @@ const Dashboard = () => {
                       <GrayBtn onClick={() => deleteRestaurant(r.id)}>
                         <Icon.Trash />
                       </GrayBtn>
-                      <GrayBtn onClick={() => setToggle(!toggle)}>
+                      <GrayBtn onClick={() => handleEdit(r)}>
                         <Icon.PencilSquare />
                       </GrayBtn>
-                      <Modal show={toggle} onHide={handleHide}>
-                        <Modal.Header closeButton>
-                          <Modal.Title>Edit Restaurant</Modal.Title>
-                        </Modal.Header>
-                        <RestaurantForm restaurantProp={r} />
-                        <br></br>
-                      </Modal>
+                      
                     </Card.Body>
                   </Tl>
                 </Tst>
@@ -84,7 +88,14 @@ const Dashboard = () => {
             ))}
           </CardDeck>
         </Container>
-
+      <Modal show={toggle} onHide={handleHide}>
+          <Modal.Header closeButton>
+            <Modal.Title>Edit Restaurant</Modal.Title>
+          </Modal.Header>
+          <RestaurantForm  restaurantProp={editRestaurant}/>
+          <br></br>
+      </Modal>
+    
         <br></br>
         <h3>My Favorites</h3>
       </HomeImgCont>
