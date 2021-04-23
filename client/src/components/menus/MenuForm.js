@@ -1,18 +1,16 @@
-import { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
-import axios from 'axios'
+import { useState } from "react";
+import { Form, Button } from "react-bootstrap";
+import axios from "axios";
 import { Btn } from "../shared/StyledComponents";
 
-
-
-
 const MenuForm = () => {
-  const [menu, setMenu] = useState({ name: "", image: "", description: "" })
+  const [menu, setMenu] = useState({ name: "", image: "", description: "" });
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    setMenu({ name: '', image: '', desc: '' })
+    e.preventDefault();
+    setMenu({ name: "", image: "", desc: "" });
     axios
+
       .post(`/api/restaurants/:restaurant_id/menus`, {
         name: menu.name,
         description: menu.description,
@@ -21,57 +19,59 @@ const MenuForm = () => {
       .then((res) => {
         // console.log(res)
       })
-      .catch((err) => console.log(err))
-  }
+      .catch((err) => console.log(err));
+  };
 
-    const handleChange = (e) => {
-      setMenu({
-        ...menu,
-        [e.target.name]: e.target.value,
-      })
-    }
+  const handleChange = (e) => {
+    setMenu({
+      ...menu,
+      [e.target.name]: e.target.value,
+    });
+  };
 
-    const handleUpdate = (e) => {
-      //
-      axios
-        .put(`/api/restaurants/:restaurant_id/menus`, {
+  const handleUpdate = (e) => {
+    //
+    axios
+      .put(`/api/restaurants/:restaurant_id/menus`, {
         name: menu.name,
         description: menu.description,
         image: menu.image,
-        })
-        .then((res) => {
-          // console.log(res)
-        })
-        .catch((err) => console.log(err))
-    }
+      })
+      .then((res) => {
+        // console.log(res)
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Control
-        size='lg'
-        placeholder='Name'
-        name='name'
+        size="sm"
+        placeholder="Name"
+        name="name"
         value={menu.name}
         onChange={handleChange}
       />
+      <br></br>
       <Form.Control
-        size='lg'
-        placeholder='Description'
-        name='description'
+        size="sm"
+        placeholder="Description"
+        name="description"
         value={menu.desc}
         onChange={handleChange}
       />
+      <br></br>
       <Form.Control
-        size='lg'
-        placeholder='Image'
-        name='image'
+        size="sm"
+        placeholder="Image"
+        name="image"
         value={menu.image}
         onChange={handleChange}
       />
-      <Btn type='submit'>Submit</Btn>
+      <br></br>
+      <Btn type="submit">Submit</Btn>
     </Form>
-  )
-}
-
+  );
+};
 
 export default MenuForm;

@@ -1,10 +1,8 @@
 import { Component } from "react";
 import axios from "axios";
 import RestaurantList from "./RestaurantList";
-import { Tst } from "styled-components";
 import { Container } from "react-bootstrap";
-import RestaurantForm from "./RestaurantForm";
-// import {QrGenerator} from  "./qrCodes";
+import { HomeImgCont } from "../shared/StyledComponents";
 
 class Restaurants extends Component {
   state = { restaurants: [] };
@@ -52,16 +50,15 @@ class Restaurants extends Component {
     const { restaurants } = this.state;
     return (
       <>
-        <Container>
+        <HomeImgCont>
           <h4>Restaurants</h4>
           <br></br>
-        </Container>
+        </HomeImgCont>
         <RestaurantList
           restaurants={restaurants}
           deleteRestaurant={this.deleteRestaurant}
           updateRestaurant={this.updateRestaurant}
         />
-        {/* <QrGenerator/> */}
       </>
     );
   }

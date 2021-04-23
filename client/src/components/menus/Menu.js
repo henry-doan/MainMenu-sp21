@@ -1,9 +1,10 @@
 import { Component } from "react";
 import axios from "axios";
 import { Card, Image, Container } from "react-bootstrap";
-import { Tst, Tl, Btn } from "../shared/StyledComponents";
-import MenuForm from './MenuForm';
+import { Tst, Tl, Btn, GrayBtn } from "../shared/StyledComponents";
+import MenuForm from "./MenuForm";
 import { Link } from "react-router-dom";
+import * as Icon from "react-bootstrap-icons";
 
 class Menu extends Component {
   state = { menu: [] };
@@ -27,7 +28,7 @@ class Menu extends Component {
 
   render() {
     const { editing } = this.state;
-    const { id, name, description, image } = this.props;
+    const { id, name, description, image, deleteMenu } = this.props;
     return (
       <>
         <Tst style={{ width: "15rem" }}>
@@ -41,9 +42,16 @@ class Menu extends Component {
               {editing ? (
                 <MenuForm {...this.props} toggleForm={this.toggleForm} />
               ) : (
-                <Btn onClick={() => this.toggleForm()}>Edit</Btn>
+                <GrayBtn onClick={() => this.toggleForm()}>
+                  <Icon.PencilSquare />
+                </GrayBtn>
               )}
-              {/* <Btn onClick={() => deleteMenu(id)}>Delete</Btn> */}
+              <GrayBtn onClick={() => deleteMenu(id)}>
+                <Icon.Trash />
+              </GrayBtn>
+              <GrayBtn>
+                <Link to={`/menus/${id}`}>Generate QR</Link>
+              </GrayBtn>
             </Card.Body>
           </Tl>
         </Tst>
@@ -53,9 +61,6 @@ class Menu extends Component {
 }
 
 export default Menu;
-
-
-
 
 // import React from 'react'
 // import { Section, Photo} from '../shared/StyledComponents'

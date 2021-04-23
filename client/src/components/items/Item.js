@@ -1,7 +1,8 @@
 import { Component } from "react";
 import axios from "axios";
 import { Card, Image, Container } from "react-bootstrap";
-import { Tst, Tl } from "../shared/StyledComponents";
+import { Tst, Tl, GrayBtn } from "../shared/StyledComponents";
+import * as Icon from "react-bootstrap-icons";
 
 class Item extends Component {
   state = { item: [] };
@@ -25,17 +26,20 @@ class Item extends Component {
 
   render() {
     const { editing } = this.state;
-    const { id, name, description, image, price } = this.props;
+    const { id, name, description, image, price, deleteItem } = this.props;
     return (
       <>
         <Container>
-          <Tst style={{ width: "15rem" }}>
-            <Card.Img variant="top" src={image} />
+          <Tst style={{ width: "fluid", height: "fluid" }}>
+            {/* <Card.Img variant="top" src={image} /> */}
             <Tl>
               <Card.Body>
                 <Card.Title>{name}</Card.Title>
                 <Card.Text>{description}</Card.Text>
                 <Card.Text>{price}</Card.Text>
+                <GrayBtn onClick={() => deleteItem(id)}>
+                  <Icon.Trash />
+                </GrayBtn>
               </Card.Body>
             </Tl>
           </Tst>

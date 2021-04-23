@@ -1,35 +1,9 @@
-// import React, { useState } from 'react';
-// import Menu from './Menu';
-// import items from '../data';
-// import MenuForm from './MenuForm';
-// import Logo from "../images/Logo.png";
-// import { IMG, HomeImgCont, HomeIMG } from "../shared/StyledComponents";
-
-// const  Menus= () => {
-// const [menuItems, setMenuItems] = useState(items);
-//   return (
-    
-//     <main>
-//       <MenuForm />
-//       <section className='menu section'>
-//         <div className='name'>
-//           <h2>MainMenu</h2>
-//           <div className='underline'></div>
-//         </div>
-//         <Menu items={menuItems} />
-//       </section>
-//     </main>
-//   )
-// }
-
-// export default Menus
-
 import { Component } from "react";
 import axios from "axios";
 import MenuList from "./MenuList";
-import { Tst, Btn } from "styled-components";
+import { IMG, HomeImgCont, FormCont } from "../shared/StyledComponents";
 import { Container } from "react-bootstrap";
-import MenuForm from './MenuForm';
+import MenuForm from "./MenuForm";
 
 class Menus extends Component {
   state = { menus: [] };
@@ -37,7 +11,7 @@ class Menus extends Component {
   componentDidMount() {
     console.log(this.props);
     axios
-    // /api/restaurants/:restaurant_id/menus/
+      // /api/restaurants/:restaurant_id/menus/
       .get(`/api/restaurants/${this.id}/menus/`)
       .then((res) => {
         this.setState({ menus: res.data });
@@ -80,16 +54,20 @@ class Menus extends Component {
     const { menus } = this.state;
     return (
       <>
-        <Container>
+        <HomeImgCont>
           <h4>Menus</h4>
           <br></br>
-        </Container>
-        <MenuForm />
-        <MenuList
-          menus={menus}
-          deleteMenu={this.deleteMenu} 
-          updateMenu={this.updateMenu}
-        />
+          <h4>Add a Menu</h4>
+          <FormCont>
+            <MenuForm />
+          </FormCont>
+          <br></br>
+          <MenuList
+            menus={menus}
+            deleteMenu={this.deleteMenu}
+            updateMenu={this.updateMenu}
+          />
+        </HomeImgCont>
       </>
     );
   }
