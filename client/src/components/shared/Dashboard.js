@@ -1,7 +1,14 @@
 import { IMG, HomeImgCont, HomeIMG, H3, Tl, Tst } from "./StyledComponents";
 import { Link } from "react-router-dom";
-import { Card, Container, Modal } from "react-bootstrap";
-import { Btn } from "../shared/StyledComponents";
+import {
+  Card,
+  Container,
+  Modal,
+  CardGroup,
+  CardDeck,
+  CardColumns,
+} from "react-bootstrap";
+import { Btn, GrayBtn } from "../shared/StyledComponents";
 import Logo from "../images/Logo.png";
 import axios from "axios";
 import { useContext, useState, useEffect } from "react";
@@ -15,9 +22,11 @@ import Restaurant from "../restaurants/Restaurant";
 
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
-  const { restaurant, deleteRestaurant, updateRestaurant } = useContext(RestaurantContext);
+  const { restaurant, deleteRestaurant, updateRestaurant } = useContext(
+    RestaurantContext
+  );
   const [restaurants, setrestaurants] = useState([]);
-  const [toggle, setToggle] = useState(false)
+  const [toggle, setToggle] = useState(false);
 
   const handleHide = () => setToggle(false);
 
@@ -29,7 +38,6 @@ const Dashboard = () => {
       .catch((err) => console.log(err));
   }, []);
 
- 
   return (
     <>
       <HomeImgCont>
@@ -37,38 +45,45 @@ const Dashboard = () => {
         <h2>Welcome, {user.name || user.user.name}</h2>
         <br></br>
         <br></br>
+        <H3>Add a Restaurant</H3>
+        <br></br>
         <RestaurantForm />
         <br></br>
         <H3>My Menus</H3>
-        {restaurants.map((r) => (
-          <>
-            <Tst style={{ width: "15rem" }}>
-              <Card.Img variant="top" src={r.image} />
-              <Tl>
-                <Card.Body>
-                  <Card.Title>
-                    <Link to={`/restaurants/${r.id}/menus`}>{r.name}</Link>
-                  </Card.Title>
-                  <Card.Text>{r.description}</Card.Text>
+        <br></br>
+        <Container>
+          <CardDeck>
+            {restaurants.map((r) => (
+              <>
+                <Tst style={{ width: "15rem" }}>
+                  <Card.Img variant="top" src={r.image} />
+                  <Tl>
+                    <Card.Body>
+                      <Card.Title>
+                        <Link to={`/restaurants/${r.id}/menus`}>{r.name}</Link>
+                      </Card.Title>
+                      <Card.Text>{r.description}</Card.Text>
 
-                  <Btn onClick={() => deleteRestaurant(r.id)}>
-                    <Icon.Trash />
-                  </Btn>
-                  <Btn onClick={() => setToggle(!toggle)}>
-                    <Icon.PencilSquare />
-                  </Btn>
-                  <Modal show={toggle} onHide={handleHide}>
-                    <Modal.Header closeButton>
-                      <Modal.Title>Edit Restaurant</Modal.Title>
-                    </Modal.Header>
-                  <RestaurantForm restaurantProp={r}/>
-                  </Modal>
-                </Card.Body>
-              </Tl>
-            </Tst>
-          </>
-        ))}
-        
+                      <GrayBtn onClick={() => deleteRestaurant(r.id)}>
+                        <Icon.Trash />
+                      </GrayBtn>
+                      <GrayBtn onClick={() => setToggle(!toggle)}>
+                        <Icon.PencilSquare />
+                      </GrayBtn>
+                      <Modal show={toggle} onHide={handleHide}>
+                        <Modal.Header closeButton>
+                          <Modal.Title>Edit Restaurant</Modal.Title>
+                        </Modal.Header>
+                        <RestaurantForm restaurantProp={r} />
+                        <br></br>
+                      </Modal>
+                    </Card.Body>
+                  </Tl>
+                </Tst>
+              </>
+            ))}
+          </CardDeck>
+        </Container>
 
         <br></br>
         <h3>My Favorites</h3>

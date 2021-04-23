@@ -9,7 +9,7 @@ class Restaurant extends Component {
 
   componentDidMount() {
     axios
-      .get(`/api/restaurant`)
+      .get(`/api/restaurants/`)
       .then((res) => {
         this.setState({ restaurant: res.data });
         console.log(this.state);
@@ -28,17 +28,15 @@ class Restaurant extends Component {
     const { id, name, description, image } = this.props;
     return (
       <>
-        <Container>
-          <Tst style={{ width: "15rem" }}>
-            <Card.Img variant="top" src={image} />
-            <Tl>
-              <Card.Body>
-                <Card.Title>{name}</Card.Title>
-                <Card.Text>{description}</Card.Text>
-              </Card.Body>
-            </Tl>
-          </Tst>
-        </Container>
+        <Tst style={{ width: "15rem" }}>
+          <Card.Img variant="top" src={image} />
+          <Tl>
+            <Card.Body>
+              <Card.Title>{name}</Card.Title>
+              <Card.Text>{description}</Card.Text>
+            </Card.Body>
+          </Tl>
+        </Tst>
       </>
     );
   }

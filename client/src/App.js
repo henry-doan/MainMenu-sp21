@@ -15,7 +15,7 @@ import LightTheme from "./themes/Light";
 import DarkTheme from "./themes/Dark";
 import ThemeNav from "./components/shared/ThemeNav";
 import Menus from "./components/menus/Menus";
-import Menu from "./components/menus/Menu";
+import Qr from "./components/items/Qr";
 import Items from "./components/items/Items";
 import Item from "./components/items/Item";
 import Dashboard from "./components/shared/Dashboard";
@@ -23,6 +23,7 @@ import RestaurantShow from "./components/restaurants/RestaurantShow";
 import RestaurantForm from "./components/restaurants/RestaurantForm";
 import MenuForm from "./components/menus/MenuForm";
 import ItemForm from "./components/items/ItemForm";
+import ItemShow from "./components/items/Qr";
 
 const GlobalStyle = createGlobalStyle`
     body{
@@ -63,7 +64,7 @@ const App = () => {
           <Route exact path="/restaurants" component={Restaurants} />
           <Route exact path="/restaurants/:id" component={RestaurantShow} />
           <Route exact path="/restaurants/:id/menus" component={Menus} />
-          <Route exact path="restaurants/:id/menus/:id" component={Menu} />
+          <Route exact path="/menus/:id" component={Qr} />
           <Route exact path="/menus/:menu_id/items" component={Items} />
           <Route exact path="/menus/:menu_id/items/:id" component={Item} />
           <Route exact path="/restaurant-form" component={RestaurantForm} />

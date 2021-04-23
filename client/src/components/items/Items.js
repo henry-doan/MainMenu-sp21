@@ -10,11 +10,11 @@ class Items extends Component {
   componentDidMount() {
     console.log(this.props);
     axios
-    // /api/restaurants/:restaurant_id/menus/
+      // /api/restaurants/:restaurant_id/menus/
       .get(`/api/menus/${this.id}/items/`)
       .then((res) => {
         this.setState({ items: res.data });
-        console.log(this.state.items)
+        console.log(this.state.items);
       })
       .catch((err) => console.log(err));
   }
@@ -50,17 +50,18 @@ class Items extends Component {
       })
       .catch((err) => console.log(err));
   };
+
   render() {
     const { items } = this.state;
     return (
       <>
         <Container>
-          <h4>Items From Menu</h4>
+          <h4>Menu Items</h4>
           <br></br>
         </Container>
         <ItemList
           items={items}
-          deleteItem={this.deleteItem} 
+          deleteItem={this.deleteItem}
           updateItem={this.updateItem}
         />
       </>

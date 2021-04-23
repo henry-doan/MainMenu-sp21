@@ -12,18 +12,14 @@ const RestaurantList = ({
       {restaurants.map((r) => (
         <>
           <Container fluid>
-            <Row>
-              <Col>
-                <Link to={`/restaurants/${r.id}`}>
-                  <Restaurant
-                    key={r.id}
-                    {...r}
-                    deleteRestaurant={deleteRestaurant}
-                    updateRestaurant={updateRestaurant}
-                  />
-                </Link>
-              </Col>
-            </Row>
+            <Link to={`/restaurants/${r.id}`}>
+              <Restaurant
+                key={r.id}
+                {...r}
+                deleteRestaurant={deleteRestaurant}
+                updateRestaurant={updateRestaurant}
+              />
+            </Link>
           </Container>
           <br></br>
         </>
