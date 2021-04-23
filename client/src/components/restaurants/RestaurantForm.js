@@ -3,7 +3,7 @@ import { Form, Button, Container } from "react-bootstrap";
 import { Btn, IMG, LoginImgCont } from "../shared/StyledComponents";
 import axios from "axios";
 
-const RestaurantForm = ({ restaurantProp }) => {
+const RestaurantForm = ({ restaurantProp, addRestaurant }) => {
   const [restaurant, setRestaurant] = useState(
     restaurantProp
       ? {
@@ -16,6 +16,7 @@ const RestaurantForm = ({ restaurantProp }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // addRestaurant(restaurant)
     setRestaurant({ name: "", image: "", description: "" });
     if (restaurantProp) {
       handleUpdate();
@@ -34,7 +35,7 @@ const RestaurantForm = ({ restaurantProp }) => {
   };
 
   const handleChange = (e) => {
-    console.log(restaurantProp.id);
+    // console.log(restaurantProp.id);
     setRestaurant({
       ...restaurant,
       [e.target.name]: e.target.value,

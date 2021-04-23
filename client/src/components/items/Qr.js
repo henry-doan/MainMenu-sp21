@@ -9,7 +9,7 @@ var QRCode = require("qrcode.react");
 
 class Qr extends Component {
   state = { items: [] };
-  id = this.props.match.params.menu_id;
+  id = this.props.match.params.id;
 
   render() {
     const { items } = this.state;
