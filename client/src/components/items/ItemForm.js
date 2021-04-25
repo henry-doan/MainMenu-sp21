@@ -1,19 +1,38 @@
-import { useState } from "react";
+import { useState, Component } from "react";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
 
-const ItemForm = () => {
-  const [item, setItem] = useState({
-    name: "",
-    image: "",
-    description: "",
-    price: "",
-  });
+
+
+
+
+const ItemForm = ({ itemProp, addItem }) => {
+  const [item, setItem] = useState(
+    itemProp
+      ? {
+          name: itemProp.name,
+          image: itemProp.image,
+          description: itemProp.description,
+          price: itemProp.price,
+        }
+      : { name: "", image: "", description: "", price:"" }
+  );
+
+// const ItemForm = () => {
+//   const [item, setItem] = useState({
+//     name: "",
+//     image: "",
+//     description: "",
+//     price: "",
+//   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setItem({ name: "", image: "", desc: "", price: "" });
-    axios
+    if (itemProp){
+      handleUpdate();
+    } else {
+      axios
       .post(`/api/items/${item.id}`, {
         name: item.name,
         description: item.description,
@@ -24,7 +43,9 @@ const ItemForm = () => {
         // console.log(res)
       })
       .catch((err) => console.log(err));
+    }
   };
+
 
   const handleChange = (e) => {
     setItem({

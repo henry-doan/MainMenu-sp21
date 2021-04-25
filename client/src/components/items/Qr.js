@@ -2,7 +2,9 @@ import { Component } from "react";
 import axios from "axios";
 import ItemList from "./ItemList";
 import { Tst } from "styled-components";
-import { Container } from "react-bootstrap";
+import { IMG, QRImgCont, HomeIMG, H3, H4, H5, } from "../shared/StyledComponents";
+import { Container, Row, Col } from "react-bootstrap";
+import Logo from "../images/Logo.png";
 
 var React = require("react");
 var QRCode = require("qrcode.react");
@@ -15,11 +17,26 @@ class Qr extends Component {
     const { items } = this.state;
     return (
       <>
-        <Container>
-          <h4>QR</h4>
-          <br></br>
-          <QRCode value={`/menus/${this.id}/items`} />
+        <Container fluid>
+          <Row>
+            <Col>
+              <H4>Scan code to view menu</H4>
+              <br></br>
+              <H4>
+                <QRCode value={`/menus/${this.id}/items`} />
+              </H4>
+              <br></br>
+              <H5>{`/menus/${this.id}/items`}</H5>
+            </Col>
+          </Row>
+          <Row>
+            <Col>{}
+            </Col>
+          </Row>
         </Container>
+        <QRImgCont>
+          <HomeIMG src={Logo} alt="MainMenu Logo" fluid />{" "}
+        </QRImgCont>
       </>
     );
   }
