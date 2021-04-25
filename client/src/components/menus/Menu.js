@@ -7,12 +7,13 @@ import { Link } from "react-router-dom";
 import * as Icon from "react-bootstrap-icons";
 
 class Menu extends Component {
-  state = { menu: [] };
-  // id = this.props.match.params.id
+  state = { menus: [] };
+  id = this.props.restaurant_id
 
-  componentDidMount() {
+  componentDidMount = (id) => {
+    console.log("props", this.id)
     axios
-      .get(`/api/menu/`)
+      .get(`/api/restaurants/${id}/menus`)
       .then((res) => {
         this.setState({ menu: res.data });
         console.log(this.state);
@@ -28,7 +29,7 @@ class Menu extends Component {
 
   render() {
     const { editing } = this.state;
-    const { id, name, description, image, deleteMenu } = this.props;
+    const { id, name, description, image, deleteMenu, history } = this.props;
     return (
       <>
         <Tst style={{ width: "15rem" }}>
@@ -40,7 +41,7 @@ class Menu extends Component {
               </Card.Title>
               <Card.Text>{description}</Card.Text>
               {editing ? (
-                <MenuForm {...this.props} toggleForm={this.toggleForm} />
+                <MenuForm restId = {this.id} toggleForm={this.toggleForm} />
               ) : (
                 <GrayBtn onClick={() => this.toggleForm()}>
                   <Icon.PencilSquare />

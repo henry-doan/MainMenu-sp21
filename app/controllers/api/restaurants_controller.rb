@@ -1,5 +1,5 @@
 class Api::RestaurantsController < ApplicationController
-  before_action :set_restaurant, only: [:update, :show, :destroy]
+  before_action :set_user, only: [:update, :show, :destroy]
 
   def index
     render json: current_user.restaurants

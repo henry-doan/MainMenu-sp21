@@ -3,7 +3,7 @@ import { Container, CardDeck, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { IMG, HomeImgCont, FormCont } from "../shared/StyledComponents";
 
-const MenuList = ({ menus, deleteMenu, updateMenu }) => {
+const MenuList = ({ menus, deleteMenu, updateMenu, history }) => {
   return (
     <>
       {menus.map((m) => (
@@ -13,6 +13,7 @@ const MenuList = ({ menus, deleteMenu, updateMenu }) => {
             {...m}
             deleteMenu={deleteMenu}
             updateMenu={updateMenu}
+            history={history}
           />
           <br></br>
         </>

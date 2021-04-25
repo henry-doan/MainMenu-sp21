@@ -7,6 +7,7 @@ import {
   CardGroup,
   CardDeck,
   CardColumns,
+  Footer
 } from "react-bootstrap";
 import { Btn, GrayBtn } from "../shared/StyledComponents";
 import Logo from "../images/Logo.png";
@@ -98,7 +99,12 @@ const Dashboard = () => {
     
         <br></br>
         <h3>My Favorites</h3>
+      <footer>
+
+        <p> &#169 Copyright all rights reserved</p>
+      </footer>
       </HomeImgCont>
+
     </>
   );
 };

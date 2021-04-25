@@ -22,6 +22,10 @@ export const FormCont = styled.div`
 export const HomeImgCont = styled.div`
   margin-left: 2%;
 `
+export const QRImgCont = styled.div`
+  margin-left: 47%;
+  padding-top: 200px;
+`
 
 export const Btn = styled(Button)`
   color: black;
@@ -46,6 +50,15 @@ export const HomeIMG = styled(Image)`
 
 export const H3 = styled.h3`
   font-weight: bold;
+`
+export const H4 = styled.h4`
+  font-weight: lighter;
+  text-align: center;
+`
+
+export const H5 = styled.h5`
+  font-weight: bold;
+  text-align: center;
 `
 
 export const Tl = styled.div`

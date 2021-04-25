@@ -1,17 +1,22 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
 import { Btn } from "../shared/StyledComponents";
+import restaurantProp from "../restaurants/RestaurantForm";
+// import { RestaurantContext } from "../../providers/RestaurantProvider";
 
-const MenuForm = () => {
+const MenuForm = (props, restId) => {
   const [menu, setMenu] = useState({ name: "", image: "", description: "" });
-
+  // const { restaurant } = useContext(RestaurantContext);
+  
+  console.log("props from menuform", props)
+  // const {id} = props 
   const handleSubmit = (e) => {
     e.preventDefault();
     setMenu({ name: "", image: "", desc: "" });
     axios
 
-      .post(`/api/restaurants/:restaurant_id/menus`, {
+      .post(`/api/restaurants/${restId}/menus`, {
         name: menu.name,
         description: menu.description,
         image: menu.image,
@@ -32,7 +37,7 @@ const MenuForm = () => {
   const handleUpdate = (e) => {
     //
     axios
-      .put(`/api/restaurants/:restaurant_id/menus`, {
+      .put(`/api/restaurants/${restId}/menus`, {
         name: menu.name,
         description: menu.description,
         image: menu.image,

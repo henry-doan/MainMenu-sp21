@@ -18,16 +18,16 @@ class Menus extends Component {
       })
       .catch((err) => console.log(err));
   }
-  addMenus = (menu) => {
-    axios
-      .post("/api/menus", { menu })
+  addMenus = (restaurant_id, menu) => {
+    axios.post(`/api/restaurants/${restaurant_id}/menus`, { menu } )
+      // .post("/api/menus", { menu })
       .then((res) => {
         const { menus } = this.state;
         this.setState({ menus: [...menus, res.data] });
       })
       .catch((err) => console.log(err));
   };
-  updateMenu = (id, menu) => {
+  updateMenu = (id, menu, history) => {
     axios
       .put(`/api/restaurants/${this.id}/menus/${id}`, { menu })
       .then((res) => {
@@ -37,7 +37,8 @@ class Menus extends Component {
           }
           return m;
         });
-        this.setState({ menus });
+        this.setState({ menus })
+        history.push('/restaurants')
       })
       .catch((err) => console.log(err));
   };
@@ -51,7 +52,7 @@ class Menus extends Component {
       .catch((err) => console.log(err));
   };
   render() {
-    const { menus } = this.state;
+    const { menus, history } = this.state;
     return (
       <>
         <HomeImgCont>
@@ -66,6 +67,7 @@ class Menus extends Component {
             menus={menus}
             deleteMenu={this.deleteMenu}
             updateMenu={this.updateMenu}
+            history={history}
           />
         </HomeImgCont>
       </>
