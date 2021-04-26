@@ -53,7 +53,7 @@ const Dashboard = () => {
     <>
       <HomeImgCont>
         <HomeIMG src={Logo} alt="MainMenu Logo" fluid />
-        <h2>Welcome, {user.name || user.user.name}</h2>
+        {/* <h2>Welcome, {user.name || user.user.name}</h2> */}
         <br></br>
         <br></br>
         <H3>Add a Restaurant</H3>

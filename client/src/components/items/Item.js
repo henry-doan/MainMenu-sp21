@@ -3,6 +3,7 @@ import axios from "axios";
 import { Card, Image, Container } from "react-bootstrap";
 import { Tst, Tl, GrayBtn } from "../shared/StyledComponents";
 import * as Icon from "react-bootstrap-icons";
+import ItemForm from "./ItemForm";
 
 class Item extends Component {
   state = { item: [] };
@@ -37,6 +38,13 @@ class Item extends Component {
                 <Card.Title>{name}</Card.Title>
                 <Card.Text>{description}</Card.Text>
                 <Card.Text>{price}</Card.Text>
+                {editing ? (
+                  <ItemForm {...this.props} toggleForm={this.toggleForm} />
+                ) : (
+                  <GrayBtn onClick={() => this.toggleForm()}>
+                    <Icon.PencilSquare />
+                  </GrayBtn>
+                )}
                 <GrayBtn onClick={() => deleteItem(id)}>
                   <Icon.Trash />
                 </GrayBtn>

@@ -1,7 +1,8 @@
 import { Component } from "react";
 import axios from "axios";
 import ItemList from "./ItemList";
-import { Tst } from "styled-components";
+import ItemForm from "./ItemForm";
+import { IMG, HomeImgCont, FormCont } from "../shared/StyledComponents";
 import { Container } from "react-bootstrap";
 
 class Items extends Component {
@@ -20,7 +21,7 @@ class Items extends Component {
   }
   addItem = (item) => {
     axios
-      .post("/api/items", { item })
+      .post(`/api/menus/${this.id}/items/`, { item })
       .then((res) => {
         const { items } = this.state;
         this.setState({ items: [...items, res.data] });
@@ -57,6 +58,8 @@ class Items extends Component {
       <>
         <Container>
           <h4>Menu Items</h4>
+          <br></br>
+          <ItemForm addItem={this.addItem} />
           <br></br>
         </Container>
         <ItemList

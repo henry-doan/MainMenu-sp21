@@ -43,7 +43,7 @@ export const IMG = styled(Image)`
 `
 
 export const HomeIMG = styled(Image)`
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   margin-top: -40px;
   height: 50px;
 `
@@ -52,9 +52,10 @@ export const H3 = styled.h3`
   font-weight: bold;
 `
 export const H4 = styled.h4`
+  padding-top: 20px;
   font-weight: lighter;
   text-align: center;
-`
+`;
 
 export const H5 = styled.h5`
   font-weight: bold;
