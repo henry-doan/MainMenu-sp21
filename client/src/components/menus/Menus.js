@@ -18,16 +18,16 @@ class Menus extends Component {
       })
       .catch((err) => console.log(err));
   }
-  addMenus = (restaurant_id, menu) => {
-    axios.post(`/api/restaurants/${restaurant_id}/menus`, { menu } )
-      // .post("/api/menus", { menu })
+  addMenu = (menu) => {
+    axios
+      .post(`/api/restaurants/${this.id}/menus/`, { menu })
       .then((res) => {
         const { menus } = this.state;
         this.setState({ menus: [...menus, res.data] });
       })
       .catch((err) => console.log(err));
   };
-  updateMenu = (id, menu, history) => {
+  updateMenu = (id, menu) => {
     axios
       .put(`/api/restaurants/${this.id}/menus/${id}`, { menu })
       .then((res) => {
@@ -37,8 +37,7 @@ class Menus extends Component {
           }
           return m;
         });
-        this.setState({ menus })
-        history.push('/restaurants')
+        this.setState({ menus });
       })
       .catch((err) => console.log(err));
   };
@@ -52,22 +51,19 @@ class Menus extends Component {
       .catch((err) => console.log(err));
   };
   render() {
-    const { menus, history } = this.state;
+    const { menus } = this.state;
     return (
       <>
         <HomeImgCont>
-          <h4>Menus</h4>
-          <br></br>
           <h4>Add a Menu</h4>
           <FormCont>
-            <MenuForm />
+            <MenuForm addMenu={this.addMenu} />
           </FormCont>
           <br></br>
           <MenuList
             menus={menus}
             deleteMenu={this.deleteMenu}
             updateMenu={this.updateMenu}
-            history={history}
           />
         </HomeImgCont>
       </>

@@ -17,7 +17,7 @@ const Navigator = ({ theme, user, handleLogout, location, history }) => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="justify-content-end">
-            <Nav.Link href="/restaurants">Restaurants</Nav.Link>
+            <Nav.Link href="/">Dashboard</Nav.Link>
             <Nav.Link onClick={() => handleLogout(history)}>Logout</Nav.Link>
           </Nav>
         </Navbar.Collapse>
@@ -35,7 +35,7 @@ const Navigator = ({ theme, user, handleLogout, location, history }) => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="justify-content-end">
-            <Nav.Link href="/restaurants">Restaurants</Nav.Link>
+            {/* <Nav.Link href="/restaurants">Restaurants</Nav.Link> */}
             <Nav.Link href="/register">Register</Nav.Link>
             <Nav.Link href="/login">Login</Nav.Link>
             <Nav.Link href="/menus">Menus</Nav.Link>

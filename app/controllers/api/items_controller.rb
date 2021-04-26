@@ -13,10 +13,10 @@ class Api::ItemsController < ApplicationController
 
   def create
     item = @menu.items.new(item_params)
-    if @item.save
-      render json: @item
+    if item.save
+      render json: item
     else
-      render json: { errors: @item.errors }, status: :unprocessable_entity
+      render json: { errors: item.errors }, status: :unprocessable_entity
     end
   end
 

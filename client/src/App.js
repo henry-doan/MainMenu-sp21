@@ -1,6 +1,4 @@
-import Home from "./components/shared/Dashboard";
 import NoMatch from "./components/shared/NoMatch";
-import Navbar from "./components/shared/Navbar";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import { Switch, Route } from "react-router-dom";
@@ -8,8 +6,7 @@ import FetchUser from "./components/auth/FetchUser";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import Navigator from "./components/shared/Navigator";
 import React, { useState } from "react";
-import Restaurants from "./components/restaurants/Restaurants";
-import Restaurant from "./components/restaurants/Restaurant";
+
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import LightTheme from "./themes/Light";
 import DarkTheme from "./themes/Dark";
@@ -17,13 +14,9 @@ import ThemeNav from "./components/shared/ThemeNav";
 import Menus from "./components/menus/Menus";
 import Qr from "./components/items/Qr";
 import Items from "./components/items/Items";
-import Item from "./components/items/Item";
+
 import Dashboard from "./components/shared/Dashboard";
-import RestaurantShow from "./components/restaurants/RestaurantShow";
-import RestaurantForm from "./components/restaurants/RestaurantForm";
-import MenuForm from "./components/menus/MenuForm";
-import ItemForm from "./components/items/ItemForm";
-import ItemShow from "./components/items/Qr";
+
 
 const GlobalStyle = createGlobalStyle`
     body{
@@ -61,15 +54,11 @@ const App = () => {
           <ProtectedRoute exact path="/" component={Dashboard} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
-          <Route exact path="/restaurants" component={Restaurants} />
-          <Route exact path="/restaurants/:id" component={RestaurantShow} />
-          <Route exact path="/restaurants/:id/menus" component={Menus} />
+          {/* <Route exact path="/restaurants" component={Restaurants} /> */}
+          <ProtectedRoute exact path="/restaurants/:id/menus" component={Menus} />
           <Route exact path="/menus/:id" component={Qr} />
-          <Route exact path="/menus/:menu_id/items" component={Items} />
-          <Route exact path="/menus/:menu_id/items/:id" component={Item} />
-          <Route exact path="/restaurant-form" component={RestaurantForm} />
-          <Route exact path="/menu-form" component={MenuForm} />
-          <Route exact path="/item-form" component={ItemForm} />
+          <ProtectedRoute exact path="/menus/:menu_id/items" component={Items} />
+          <Route component={NoMatch} />
         </Switch>
       </FetchUser>
     </ThemeProvider>
