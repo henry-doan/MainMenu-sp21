@@ -10,14 +10,15 @@ const RestaurantForm = ({ restaurantProp, addRestaurant }) => {
           name: restaurantProp.name,
           image: restaurantProp.image,
           description: restaurantProp.description,
+          favorite: restaurantProp.favorite,
         }
-      : { name: "", image: "", description: "" }
+      : { name: "", image: "", description: "", favorite: false }
   );
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // addRestaurant(restaurant)
-    setRestaurant({ name: "", image: "", description: "" });
+    setRestaurant({ name: "", image: "", description: "" , favorite: false});
     if (restaurantProp) {
       handleUpdate();
     } else {
@@ -26,9 +27,11 @@ const RestaurantForm = ({ restaurantProp, addRestaurant }) => {
           name: restaurant.name,
           description: restaurant.description,
           image: restaurant.image,
+          favorite: restaurant.favorite
         })
         .then((res) => {
           // console.log(res)
+          window.location.reload();
         })
         .catch((err) => console.log(err));
     }
@@ -48,9 +51,11 @@ const RestaurantForm = ({ restaurantProp, addRestaurant }) => {
         name: restaurant.name,
         description: restaurant.description,
         image: restaurant.image,
+        favorite: restaurant.favorite,
       })
       .then((res) => {
         // console.log(res)
+        window.location.reload();
       })
       .catch((err) => console.log(err));
   };

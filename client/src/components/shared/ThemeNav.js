@@ -20,7 +20,7 @@ const ThemeNav = ({changeDark,changeLight,theme}) => {
         <CheckBox 
           id="checkbox" 
           type="checkbox"
-           onChange={theme == LightTheme ? changeDark:changeLight}/>
+           onChange={theme === LightTheme ? changeDark:changeLight}/>
         <CheckBoxLabel htmlFor="checkbox" />
       </CheckBoxWrapper>
       </div>

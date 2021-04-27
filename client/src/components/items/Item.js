@@ -1,7 +1,7 @@
 import { Component } from "react";
 import axios from "axios";
-import { Card, Image, Container } from "react-bootstrap";
-import { Tst, Tl, GrayBtn } from "../shared/StyledComponents";
+import { Card, Image, Container, Media } from "react-bootstrap";
+import { Tst, Tl, GrayBtn, Cards } from "../shared/StyledComponents";
 import * as Icon from "react-bootstrap-icons";
 import ItemForm from "./ItemForm";
 
@@ -31,13 +31,19 @@ class Item extends Component {
     return (
       <>
         <Container>
+          <Media>
           <Tst style={{ width: "fluid", height: "fluid" }}>
-            {/* <Card.Img variant="top" src={image} /> */}
+            <img 
+              width={100}
+              height={100}
+              className="mr-3"
+              src={image}
+              alt="Generic placeholder"  />
             <Tl>
               <Card.Body>
                 <Card.Title>{name}</Card.Title>
                 <Card.Text>{description}</Card.Text>
-                <Card.Text>{price}</Card.Text>
+                <Cards.Text>{price}</Cards.Text>
                 {editing ? (
                   <ItemForm {...this.props} toggleForm={this.toggleForm} />
                 ) : (
@@ -51,6 +57,7 @@ class Item extends Component {
               </Card.Body>
             </Tl>
           </Tst>
+          </Media>
         </Container>
       </>
     );

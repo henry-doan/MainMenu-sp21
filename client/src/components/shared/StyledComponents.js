@@ -31,6 +31,9 @@ export const Btn = styled(Button)`
   color: black;
   background-color: #eabc80;
   border: white;
+  &:hover {
+    background-color: grey;
+  }
 `
 export const GrayBtn = styled(Button)`
   color: black;
@@ -75,6 +78,10 @@ export const Tst = styled(Card)`
   // text-decoration: underline;
 }
 `
+export const Cards = styled(Card)`
+  color: #EABC80;
+
+`
 
 export const Section = styled.div`
   width: 90vw;
@@ -91,4 +98,16 @@ export const Photo = styled(Image)`
   border: 3px solid #eabc80;
   border-radius: 4px;
   display: block;
+`
+export const Footer = styled.footer`
+  border-top: 1px solid grey;
+  margin-top: 300px;
+  margin-left: -30px;
+  
+`
+export const P = styled.p`
+margin-top: 50px;
+text-align: center;
+// margin-left: -10px;
+// padding-left: -10px;
 `
