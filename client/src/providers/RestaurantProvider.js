@@ -32,7 +32,7 @@ class RestaurantProvider extends Component {
 
   updateRestaurant = (id, restaurant, history) => {
     axios
-      .put(`/api/restaurants/${id}`, { restaurant })
+      .put(`/api/restaurants/${id}`, restaurant)
       .then((res) => {
         const restaurants = this.state.restaurants.map((r) => {
           if (r.id === id) {
@@ -40,8 +40,9 @@ class RestaurantProvider extends Component {
           }
           return r;
         });
-        this.setState({ restaurants });
-        history.push("/restaurants");
+        this.setState({restaurants: restaurants });
+        history.push("/");
+        window.location.reload();
       })
       .catch((err) => {
         console.log(err);
@@ -54,7 +55,8 @@ class RestaurantProvider extends Component {
       .then((res) => {
         const { restaurants } = this.state;
         this.setState({ restaurants: restaurants.filter((r) => r.id !== id) });
-        history.push("/restaurants");
+        window.location.reload();
+        history.push("/");
       })
       .catch((err) => {
         console.log(err);
@@ -66,6 +68,7 @@ class RestaurantProvider extends Component {
       <RestaurantContext.Provider
         value={{
           ...this.state,
+          restaurants: this.state.restaurants,
           addRestaurant: this.addRestaurant,
           updateRestaurant: this.updateRestaurant,
           deleteRestaurant: this.deleteRestaurant,

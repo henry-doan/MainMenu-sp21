@@ -6,7 +6,6 @@ import FetchUser from "./components/auth/FetchUser";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import Navigator from "./components/shared/Navigator";
 import React, { useState } from "react";
-
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import LightTheme from "./themes/Light";
 import DarkTheme from "./themes/Dark";
@@ -14,7 +13,6 @@ import ThemeNav from "./components/shared/ThemeNav";
 import Menus from "./components/menus/Menus";
 import Qr from "./components/items/Qr";
 import Items from "./components/items/Items";
-
 import Dashboard from "./components/shared/Dashboard";
 
 

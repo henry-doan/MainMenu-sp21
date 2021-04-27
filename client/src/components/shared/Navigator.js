@@ -1,7 +1,7 @@
 import React from "react";
-import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+import { Navbar, Nav,} from "react-bootstrap";
 import LightTheme from "../../themes/Light";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { AuthConsumer } from "../../providers/AuthProvider";
 
 const Navigator = ({ theme, user, handleLogout, location, history }) => {
@@ -10,8 +10,8 @@ const Navigator = ({ theme, user, handleLogout, location, history }) => {
       <Navbar
         collapseOnSelect
         expand="lg"
-        bg={theme == LightTheme ? "light" : "dark"}
-        variant={theme == LightTheme ? "light" : "dark"}
+        bg={theme === LightTheme ? "light" : "dark"}
+        variant={theme === LightTheme ? "light" : "dark"}
       >
         <Navbar.Brand href="/">MainMenu</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -28,8 +28,8 @@ const Navigator = ({ theme, user, handleLogout, location, history }) => {
       <Navbar
         collapseOnSelect
         expand="lg"
-        bg={theme == LightTheme ? "light" : "dark"}
-        variant={theme == LightTheme ? "light" : "dark"}
+        bg={theme === LightTheme ? "light" : "dark"}
+        variant={theme === LightTheme ? "light" : "dark"}
       >
         <Navbar.Brand href="/">MainMenu</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
