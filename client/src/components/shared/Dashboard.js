@@ -1,15 +1,6 @@
-import { IMG, HomeImgCont, HomeIMG, H3, Tl, Tst, Footer, P } from "./StyledComponents";
-import { Link } from "react-router-dom";
-import {
-  Card,
-  Container,
-  Modal,
-  CardGroup,
-  CardDeck,
-  CardColumns,
-  
-} from "react-bootstrap";
-import { Btn, GrayBtn } from "../shared/StyledComponents";
+import { HomeImgCont, HomeIMG, H3, Tl, Tst, Footer, P, LinkColor } from "./StyledComponents";
+import {Card, Container, Modal, CardDeck} from "react-bootstrap";
+import { GrayBtn } from "../shared/StyledComponents";
 import Logo from "../images/Logo.png";
 import axios from "axios";
 import React, { useContext, useState, useEffect } from "react";
@@ -17,14 +8,12 @@ import { AuthContext } from "../../providers/AuthProvider";
 import { RestaurantContext } from "../../providers/RestaurantProvider";
 import * as Icon from "react-bootstrap-icons";
 import RestaurantForm from "../restaurants/RestaurantForm";
-import Restaurant from "../restaurants/Restaurant";
 import FavoriteList from '../restaurants/FavoriteList';
 
 const Dashboard = (props) => {
   const { user } = useContext(AuthContext);
-  const { restaurant, deleteRestaurant, updateRestaurant } = useContext(RestaurantContext);
-  const [favoriteRestaurant, setFavoriteRestaurant] = useState({});
-  const [favoriteRestaurants, setFavoriteRestaurants] = useState([]);
+  const {deleteRestaurant, updateRestaurant } = useContext(RestaurantContext);
+  const [favoriteRestaurant] = useState({});
   const [editRestaurant, setEditRestaurant] = useState({});
   const [restaurants, setrestaurants] = useState([]);
   const [toggle, setToggle] = useState(false);
@@ -37,7 +26,7 @@ const Dashboard = (props) => {
       .get("/api/restaurants")
       .then((res) => setrestaurants(res.data))
       .catch((err) => console.log(err));
-  }, []);
+  }, [user]);
 
   const handleEdit = (restaurant) => {
     setToggle(!toggle);
@@ -56,11 +45,6 @@ const Dashboard = (props) => {
     updateRestaurant(r.id, {...r, favorite: fav}, props.history )
     // window.location.reload();
   }
-
-  // const filterRestaurants = () =>{
-  //   let favorites = 
-  //   console.log("all favorites", favorites)
-  // }
 
   return (
     <>
@@ -84,7 +68,7 @@ const Dashboard = (props) => {
                   <Tl>
                     <Card.Body>
                       <Card.Title>
-                        <Link to={`/restaurants/${r.id}/menus`}>{r.name}</Link>
+                        <LinkColor to={`/restaurants/${r.id}/menus`}>{r.name}</LinkColor>
                       </Card.Title>
                       <Card.Text>{r.description}</Card.Text>
                       <GrayBtn onClick={() => deleteRestaurant(r.id)}>
@@ -100,15 +84,6 @@ const Dashboard = (props) => {
                         >
                           <Icon.Star />
                         </GrayBtn>
-                      {/* {!fav && (
-                        <GrayBtn
-                          onClick={() => {
-                            setFav(!fav);
-                          }}
-                        >
-                          <Icon.StarFill />
-                        </GrayBtn>
-                      )} */}
                     </Card.Body>
                   </Tl>
                 </Tst>
@@ -124,8 +99,9 @@ const Dashboard = (props) => {
           <br></br>
         </Modal>
         <br></br>
+        <H3>My Favorites</H3>
+        <br></br>
         <Container>
-        <h3>My Favorites</h3>
         <FavoriteList  restaurants={restaurants}/>
         </Container>
         <Footer>

@@ -1,7 +1,7 @@
 import { Component } from "react";
 import axios from "axios";
 import MenuList from "./MenuList";
-import { IMG, HomeImgCont, FormCont } from "../shared/StyledComponents";
+
 import { Container } from "react-bootstrap";
 import MenuForm from "./MenuForm";
 

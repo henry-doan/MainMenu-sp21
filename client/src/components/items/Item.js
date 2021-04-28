@@ -1,15 +1,14 @@
 import { Component } from "react";
 import axios from "axios";
-import { Card, Image, Container, Media } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import {
   Tst1,
   ItemH,
   ItemT,
   IMG1,
-  Tl,
   Tl1,
   GrayBtn1,
-  Cards,
+  
   Price,
 } from "../shared/StyledComponents";
 import * as Icon from "react-bootstrap-icons";

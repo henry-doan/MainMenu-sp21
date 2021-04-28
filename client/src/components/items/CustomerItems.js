@@ -1,10 +1,8 @@
 import { Component } from "react";
 import axios from "axios";
-import { Card, Image, Container, Media } from "react-bootstrap";
-import { Tst1, ItemH, ItemT, IMG1, Tl, Tl1, GrayBtn1, Cards, Price } from "../shared/StyledComponents";
-import * as Icon from "react-bootstrap-icons";
-import ItemForm from "./ItemForm";
-import ItemList from "./ItemList"
+import { Container } from "react-bootstrap";
+import { Tst1, ItemH, ItemT, IMG1, Tl1, Price } from "../shared/StyledComponents";
+
 class CustomerItems extends Component {
   state = { item: [] };
   id = this.props.match.params.menu_id
@@ -20,7 +18,7 @@ class CustomerItems extends Component {
   }
 
   render() {
-    const { id, name, description, image, price, deleteItem } = this.props;
+    
     return (
       <>
         <h4>Menu Items</h4>
@@ -40,6 +38,7 @@ class CustomerItems extends Component {
             <Price>{i.price}</Price>
             </Tl1>
           </Tst1>
+          <br></br>
         </Container>
       )
       )

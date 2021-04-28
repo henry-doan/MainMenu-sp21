@@ -7,11 +7,11 @@ import {
   ItemH,
   ItemT,
   IMG1,
-  Btn,
   GrayBtn1,
+  LinkColor
 } from "../shared/StyledComponents";
 import MenuForm from "./MenuForm";
-import { Link } from "react-router-dom";
+
 import * as Icon from "react-bootstrap-icons";
 
 class Menu extends Component {
@@ -50,7 +50,7 @@ class Menu extends Component {
               alt="Generic placeholder"
             />
               <ItemH>
-                <Link to={`/menus/${id}/items`}>{name}</Link>
+                <LinkColor to={`/menus/${id}/items`}>{name}</LinkColor>
               </ItemH>
               <ItemT>{description}</ItemT>
               {editing ? (
@@ -64,7 +64,7 @@ class Menu extends Component {
                 <Icon.Trash />
               </GrayBtn1>
               <GrayBtn1>
-                <Link to={`/menus/${id}`}>Generate QR</Link>
+                <LinkColor to={`/menus/${id}`}>Generate QR</LinkColor>
               </GrayBtn1>
             </Tl1>
           </Tst1>
