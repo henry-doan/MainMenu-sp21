@@ -20,20 +20,15 @@ import RestaurantForm from "../restaurants/RestaurantForm";
 import Restaurant from "../restaurants/Restaurant";
 import FavoriteList from '../restaurants/FavoriteList';
 
-//import Restaurants from "../../components/restaurants/Restaurants";
-
 const Dashboard = (props) => {
   const { user } = useContext(AuthContext);
-  const { restaurant, deleteRestaurant, updateRestaurant } = useContext(
-    RestaurantContext
-  );
+  const { restaurant, deleteRestaurant, updateRestaurant } = useContext(RestaurantContext);
   const [favoriteRestaurant, setFavoriteRestaurant] = useState({});
   const [favoriteRestaurants, setFavoriteRestaurants] = useState([]);
   const [editRestaurant, setEditRestaurant] = useState({});
   const [restaurants, setrestaurants] = useState([]);
   const [toggle, setToggle] = useState(false);
-  // const [fav, setFav] = useState(false);
-
+  
   const handleHide = () => setToggle(false);
 
   useEffect(() => {
@@ -78,7 +73,7 @@ const Dashboard = (props) => {
         <br></br>
         <RestaurantForm addRestaurant={addRestaurant} />
         <br></br>
-        <H3>My Menus</H3>
+        <H3>My Restaurants</H3>
         <br></br>
         <Container>
           <CardDeck>

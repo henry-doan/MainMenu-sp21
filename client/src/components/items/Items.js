@@ -57,10 +57,11 @@ class Items extends Component {
     return (
       <>
         <Container>
-          <h4>Menu Items</h4>
+          <h4>Add an Item</h4>
           <br></br>
           <ItemForm addItem={this.addItem} />
           <br></br>
+          <h4>Items</h4>
         </Container>
         <ItemList
           items={items}

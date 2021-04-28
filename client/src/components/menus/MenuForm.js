@@ -47,7 +47,7 @@ class MenuForm extends Component {
         <br></br>
         <Form.Control
           size="sm"
-          type="text"
+          type="text-field"
           name="description"
           value={description}
           onChange={this.handleChange}

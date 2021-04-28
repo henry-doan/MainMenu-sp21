@@ -1,5 +1,5 @@
 import Menu from "./Menu";
-import { Container, CardDeck, Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { IMG, HomeImgCont, FormCont } from "../shared/StyledComponents";
 
@@ -8,12 +8,18 @@ const MenuList = ({ menus, deleteMenu, updateMenu }) => {
     <>
       {menus.map((m) => (
         <>
-          <Menu
-            key={m.id}
-            {...m}
-            deleteMenu={deleteMenu}
-            updateMenu={updateMenu}
-          />
+          <Container fluid>
+            <Row>
+              <Col>
+                <Menu
+                  key={m.id}
+                  {...m}
+                  deleteMenu={deleteMenu}
+                  updateMenu={updateMenu}
+                />
+              </Col>
+            </Row>
+          </Container>
           <br></br>
         </>
       ))}

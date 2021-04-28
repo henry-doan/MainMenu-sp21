@@ -14,6 +14,8 @@ import Menus from "./components/menus/Menus";
 import Qr from "./components/items/Qr";
 import Items from "./components/items/Items";
 import Dashboard from "./components/shared/Dashboard";
+import About from "./components/shared/About";
+import CustomerItems from "./components/items/CustomerItems";
 
 
 const GlobalStyle = createGlobalStyle`
@@ -51,11 +53,14 @@ const App = () => {
         <Switch>
           <ProtectedRoute exact path="/" component={Dashboard} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/about" component={About} />
+          <Route exact path="/customeritems" component={CustomerItems} />
           <Route exact path="/register" component={Register} />
           {/* <Route exact path="/restaurants" component={Restaurants} /> */}
           <ProtectedRoute exact path="/restaurants/:id/menus" component={Menus} />
           <Route exact path="/menus/:id" component={Qr} />
           <ProtectedRoute exact path="/menus/:menu_id/items" component={Items} />
+          <Route exact path="/menus/:menu_id/customeritems" component={CustomerItems} />
           <Route component={NoMatch} />
         </Switch>
       </FetchUser>
