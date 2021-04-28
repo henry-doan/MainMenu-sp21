@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Button, Image, Card } from "react-bootstrap";
+import {Link} from 'react-router-dom';
 
 export const Container = styled.div`
   margin-top: 50px;
@@ -46,7 +47,7 @@ export const IMG = styled(Image)`
 `
 
 export const HomeIMG = styled(Image)`
-  margin-bottom: 30px;
+  margin-botatom: 30px;
   margin-top: -40px;
   height: 50px;
 `
@@ -170,4 +171,9 @@ export const GrayBtn1 = styled(Button)`
   &:hover {
     background-color: grey;
   }
+`
+
+export const LinkColor =styled(Link)`
+  color: black;
+
 `

@@ -1,21 +1,20 @@
-import {RestaurantContext} from '../../providers/RestaurantProvider';
-import {useContext} from 'react';
 import {Card, CardDeck, Container} from 'react-bootstrap';
-import {Tst, Tl, Img, HomeImgCont} from '../shared/StyledComponents';
-import { Link } from "react-router-dom";
+import {Tst, Tl, LinkColor} from '../shared/StyledComponents';
 const FavoriteList = ({restaurants}) =>{
     // const {restaurants} = useContext(RestaurantContext)
     console.log(restaurants)
     return(
         <>
+        <Container>
+        <CardDeck>
         {restaurants.filter((r) => r.favorite).map((r) => (
         <Tst style={{width:"15rem"}} >
+            <Card.Img variant="top" src={r.image} />
             <Tl>
             <Card.Body>
             <>
-            <Card.Img variant="top" src={r.image} />
             <Card.Title>
-                <Link to={`/restaurants/${r.id}/menus`}>{r.name}</Link>
+                <LinkColor to={`/restaurants/${r.id}/menus`}>{r.name}</LinkColor>
             </Card.Title>
             <Card.Text>{r.description}</Card.Text>
             
@@ -26,7 +25,8 @@ const FavoriteList = ({restaurants}) =>{
 
         ))}
             
-       
+       </CardDeck>
+        </Container>
         </>
     )
 }

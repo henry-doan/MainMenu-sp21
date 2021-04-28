@@ -2,7 +2,6 @@ import { Component } from "react";
 import axios from "axios";
 import ItemList from "./ItemList";
 import ItemForm from "./ItemForm";
-import { IMG, HomeImgCont, FormCont } from "../shared/StyledComponents";
 import { Container } from "react-bootstrap";
 
 class Items extends Component {

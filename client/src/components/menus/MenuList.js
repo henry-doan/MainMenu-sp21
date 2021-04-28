@@ -1,7 +1,5 @@
 import Menu from "./Menu";
 import { Container, Row, Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import { IMG, HomeImgCont, FormCont } from "../shared/StyledComponents";
 
 const MenuList = ({ menus, deleteMenu, updateMenu }) => {
   return (

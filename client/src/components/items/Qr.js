@@ -1,8 +1,5 @@
 import { Component } from "react";
-import axios from "axios";
-import ItemList from "./ItemList";
-import { Tst } from "styled-components";
-import { IMG, QRImgCont, HomeIMG, H3, H4, H5, } from "../shared/StyledComponents";
+import { QRImgCont, HomeIMG, H4, H5, } from "../shared/StyledComponents";
 import { Container, Row, Col } from "react-bootstrap";
 import Logo from "../images/Logo.png";
 
@@ -14,7 +11,7 @@ class Qr extends Component {
   id = this.props.match.params.id;
 
   render() {
-    const { items } = this.state;
+
     return (
       <>
         <Container fluid>

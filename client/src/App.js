@@ -56,7 +56,6 @@ const App = () => {
           <Route exact path="/about" component={About} />
           <Route exact path="/customeritems" component={CustomerItems} />
           <Route exact path="/register" component={Register} />
-          {/* <Route exact path="/restaurants" component={Restaurants} /> */}
           <ProtectedRoute exact path="/restaurants/:id/menus" component={Menus} />
           <Route exact path="/menus/:id" component={Qr} />
           <ProtectedRoute exact path="/menus/:menu_id/items" component={Items} />
