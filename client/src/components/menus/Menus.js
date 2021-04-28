@@ -54,18 +54,18 @@ class Menus extends Component {
     const { menus } = this.state;
     return (
       <>
-        <HomeImgCont>
+        <Container>
           <h4>Add a Menu</h4>
-          <FormCont>
-            <MenuForm addMenu={this.addMenu} />
-          </FormCont>
           <br></br>
-          <MenuList
-            menus={menus}
-            deleteMenu={this.deleteMenu}
-            updateMenu={this.updateMenu}
-          />
-        </HomeImgCont>
+          <MenuForm addMenu={this.addMenu} />
+          <br></br>
+          <h4>Menus</h4>
+        </Container>
+        <MenuList
+          menus={menus}
+          deleteMenu={this.deleteMenu}
+          updateMenu={this.updateMenu}
+        />
       </>
     );
   }

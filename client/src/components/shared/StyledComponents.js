@@ -58,7 +58,7 @@ export const H4 = styled.h4`
   padding-top: 20px;
   font-weight: lighter;
   text-align: center;
-`;
+`
 
 export const H5 = styled.h5`
   font-weight: bold;
@@ -85,7 +85,7 @@ export const IMG1 = styled.img`
 
 
 export const Tst = styled(Card)`
-  margin-bottom: 0plx;
+  margin-bottom: 0px;
   border-radius: 0px;
   box-shadow: 0px 3px 3px grey;
   // &:hover{
@@ -131,7 +131,7 @@ text-align: center;
 `
 export const Price = styled.p`
 color: #EABC80;
-
+font-size: 20px;
 display: flex;
 flex-wrap: wrap;
 
@@ -141,7 +141,8 @@ flex-wrap: wrap;
 export const ItemT = styled.p`
 display: flex;
 flex-wrap: wrap;
-  padding-right: 10px;
+  padding-right: 100px;
+  margin-right: 100px;
   padding-bottom: 0px;
   
   
@@ -154,15 +155,15 @@ export const ItemH = styled.h4`
   margin: 10px;
  
   display: flex;
-flex-wrap: wrap;
+  flex-wrap: wrap;
   
 `
 
 export const GrayBtn1 = styled(Button)`
   color: black;
   background-color: #EABC80;
-  margin-left: 5px;
   
+  margin-right: 10px;
   border: #f0f0f0;
   display: inline;
   float: right;

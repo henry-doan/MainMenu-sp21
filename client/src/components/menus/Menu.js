@@ -1,7 +1,15 @@
 import { Component } from "react";
 import axios from "axios";
-import { Card, Image, Container } from "react-bootstrap";
-import { Tst, Tl, Btn, GrayBtn } from "../shared/StyledComponents";
+import { Container } from "react-bootstrap";
+import {
+  Tst1,
+  Tl1,
+  ItemH,
+  ItemT,
+  IMG1,
+  Btn,
+  GrayBtn1,
+} from "../shared/StyledComponents";
 import MenuForm from "./MenuForm";
 import { Link } from "react-router-dom";
 import * as Icon from "react-bootstrap-icons";
@@ -31,30 +39,36 @@ class Menu extends Component {
     const { id, name, description, image, deleteMenu } = this.props;
     return (
       <>
-        <Tst style={{ width: "15rem" }}>
-          <Card.Img variant="top" src={image} />
-          <Tl>
-            <Card.Body>
-              <Card.Title>
+        
+        <Container>
+          <Tst1 style={{ width: "fluid", height: "fluid" }}>
+            <Tl1>
+            <IMG1
+              width={200}
+              height={200}
+              src={image}
+              alt="Generic placeholder"
+            />
+              <ItemH>
                 <Link to={`/menus/${id}/items`}>{name}</Link>
-              </Card.Title>
-              <Card.Text>{description}</Card.Text>
+              </ItemH>
+              <ItemT>{description}</ItemT>
               {editing ? (
                 <MenuForm {...this.props} toggleForm={this.toggleForm} />
               ) : (
-                <GrayBtn onClick={() => this.toggleForm()}>
+                <GrayBtn1 onClick={() => this.toggleForm()}>
                   <Icon.PencilSquare />
-                </GrayBtn>
+                </GrayBtn1>
               )}
-              <GrayBtn onClick={() => deleteMenu(id)}>
+              <GrayBtn1 onClick={() => deleteMenu(id)}>
                 <Icon.Trash />
-              </GrayBtn>
-              <GrayBtn>
+              </GrayBtn1>
+              <GrayBtn1>
                 <Link to={`/menus/${id}`}>Generate QR</Link>
-              </GrayBtn>
-            </Card.Body>
-          </Tl>
-        </Tst>
+              </GrayBtn1>
+            </Tl1>
+          </Tst1>
+        </Container>
       </>
     );
   }

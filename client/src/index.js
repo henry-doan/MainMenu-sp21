@@ -6,23 +6,23 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import AuthProvider from "./providers/AuthProvider";
 import RestaurantProvider from "./providers/RestaurantProvider";
-import MenuProvider from "./providers/MenuProvider";
+// import MenuProvider from "./providers/MenuProvider";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { initMiddleware } from "devise-axios";
-import ItemProvider from "./providers/ItemProvider";
+// import ItemProvider from "./providers/ItemProvider";
 initMiddleware();
 
 ReactDOM.render(
   <React.StrictMode>
     <AuthProvider>
       <RestaurantProvider>
-        <MenuProvider>
-          <ItemProvider>
+        {/* <MenuProvider>
+          <ItemProvider> */}
           <BrowserRouter>
             <App />
           </BrowserRouter>
-          </ItemProvider>
-        </MenuProvider>
+          {/* </ItemProvider>
+        </MenuProvider> */}
       </RestaurantProvider>
     </AuthProvider>
   </React.StrictMode>,

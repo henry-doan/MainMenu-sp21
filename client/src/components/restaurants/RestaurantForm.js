@@ -17,7 +17,6 @@ const RestaurantForm = ({ restaurantProp, addRestaurant }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // addRestaurant(restaurant)
     setRestaurant({ name: "", image: "", description: "" , favorite: false});
     if (restaurantProp) {
       handleUpdate();
@@ -38,7 +37,6 @@ const RestaurantForm = ({ restaurantProp, addRestaurant }) => {
   };
 
   const handleChange = (e) => {
-    // console.log(restaurantProp.id);
     setRestaurant({
       ...restaurant,
       [e.target.name]: e.target.value,
@@ -54,7 +52,6 @@ const RestaurantForm = ({ restaurantProp, addRestaurant }) => {
         favorite: restaurant.favorite,
       })
       .then((res) => {
-        // console.log(res)
         window.location.reload();
       })
       .catch((err) => console.log(err));
