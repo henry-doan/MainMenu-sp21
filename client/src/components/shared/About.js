@@ -5,6 +5,7 @@ import { Btn, HomeIMG, H4, P } from "../shared/StyledComponents";
 import Logo from "../images/Logo.png";
 import profilepic from '../images/profilepic.jpg';
 import paragliding from '../images/paragliding.jpg';
+import LuLuD from '../images/LuLuD.jpeg';
 
 const About = () => {
   return (
@@ -24,6 +25,7 @@ const About = () => {
           </P>
           <Card.Body>
             <Card.Title>LuLu</Card.Title>
+            <img style={{ width: "200px" }} src={LuLuD} alt="garden" />
             <Card.Text>
               I'm LuLu, and I'm a teacher from Washington. Over the last few
               weeks, I helped develop the MainMenu app with my helpful
