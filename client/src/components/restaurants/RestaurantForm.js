@@ -79,7 +79,7 @@ const RestaurantForm = ({ restaurantProp, addRestaurant }) => {
           <br></br>
           <Form.Control
             size="sm"
-            placeholder="Image"
+            placeholder="Image URL..."
             name="image"
             value={restaurant.image}
             onChange={handleChange}
