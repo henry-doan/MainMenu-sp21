@@ -13,4 +13,5 @@ namespace :api do
   end
 end
 
+get '*other', to: 'static#index'
 end
