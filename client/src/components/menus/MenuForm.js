@@ -1,8 +1,5 @@
-import { useState, useContext } from "react";
-import { Form, Button } from "react-bootstrap";
-import axios from "axios";
+import { Form } from "react-bootstrap";
 import { Btn } from "../shared/StyledComponents";
-import { RestaurantContext } from "../../providers/RestaurantProvider";
 import { Component } from "react";
 
 class MenuForm extends Component {
@@ -47,7 +44,7 @@ class MenuForm extends Component {
         <br></br>
         <Form.Control
           size="sm"
-          type="text"
+          type="text-field"
           name="description"
           value={description}
           onChange={this.handleChange}

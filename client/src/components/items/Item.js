@@ -1,7 +1,16 @@
 import { Component } from "react";
 import axios from "axios";
-import { Card, Image, Container } from "react-bootstrap";
-import { Tst, Tl, GrayBtn } from "../shared/StyledComponents";
+import { Container } from "react-bootstrap";
+import {
+  Tst1,
+  ItemH,
+  ItemT,
+  IMG1,
+  Tl1,
+  GrayBtn1,
+  
+  Price,
+} from "../shared/StyledComponents";
 import * as Icon from "react-bootstrap-icons";
 import ItemForm from "./ItemForm";
 
@@ -30,27 +39,31 @@ class Item extends Component {
     const { id, name, description, image, price, deleteItem } = this.props;
     return (
       <>
+      
         <Container>
-          <Tst style={{ width: "fluid", height: "fluid" }}>
-            {/* <Card.Img variant="top" src={image} /> */}
-            <Tl>
-              <Card.Body>
-                <Card.Title>{name}</Card.Title>
-                <Card.Text>{description}</Card.Text>
-                <Card.Text>{price}</Card.Text>
-                {editing ? (
-                  <ItemForm {...this.props} toggleForm={this.toggleForm} />
-                ) : (
-                  <GrayBtn onClick={() => this.toggleForm()}>
-                    <Icon.PencilSquare />
-                  </GrayBtn>
-                )}
-                <GrayBtn onClick={() => deleteItem(id)}>
-                  <Icon.Trash />
-                </GrayBtn>
-              </Card.Body>
-            </Tl>
-          </Tst>
+          <Tst1 style={{ width: "fluid", height: "fluid" }}>
+            <Tl1>
+              <IMG1
+                width={200}
+                height={200}
+                src={image}
+                alt="Generic placeholder"
+              />
+              <ItemH>{name}</ItemH>
+              <ItemT>{description}</ItemT>
+              <Price>{price}</Price>
+              {editing ? (
+                <ItemForm {...this.props} toggleForm={this.toggleForm} />
+              ) : (
+                <GrayBtn1 onClick={() => this.toggleForm()}>
+                  <Icon.PencilSquare />
+                </GrayBtn1>
+              )}
+              <GrayBtn1 onClick={() => deleteItem(id)}>
+                <Icon.Trash />
+              </GrayBtn1>
+            </Tl1>
+          </Tst1>
         </Container>
       </>
     );

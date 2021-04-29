@@ -1,35 +1,23 @@
-import { IMG, HomeImgCont, HomeIMG, H3, Tl, Tst } from "./StyledComponents";
-import { Link } from "react-router-dom";
-import {
-  Card,
-  Container,
-  Modal,
-  CardGroup,
-  CardDeck,
-  CardColumns,
-  Footer
-} from "react-bootstrap";
-import { Btn, GrayBtn } from "../shared/StyledComponents";
+import { HomeImgCont, HomeIMG, H3, Tl, Tst, Footer, P, LinkColor } from "./StyledComponents";
+import {Card, Container, Modal, CardDeck} from "react-bootstrap";
+import { GrayBtn } from "../shared/StyledComponents";
 import Logo from "../images/Logo.png";
 import axios from "axios";
-import { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { RestaurantContext } from "../../providers/RestaurantProvider";
 import * as Icon from "react-bootstrap-icons";
 import RestaurantForm from "../restaurants/RestaurantForm";
-import Restaurant from "../restaurants/Restaurant";
+import FavoriteList from '../restaurants/FavoriteList';
 
-//import Restaurants from "../../components/restaurants/Restaurants";
-
-const Dashboard = () => {
+const Dashboard = (props) => {
   const { user } = useContext(AuthContext);
-  const { restaurant, deleteRestaurant, updateRestaurant } = useContext(
-    RestaurantContext
-  );
+  const {deleteRestaurant, updateRestaurant } = useContext(RestaurantContext);
+  const [favoriteRestaurant] = useState({});
   const [editRestaurant, setEditRestaurant] = useState({});
   const [restaurants, setrestaurants] = useState([]);
   const [toggle, setToggle] = useState(false);
-
+  
   const handleHide = () => setToggle(false);
 
   useEffect(() => {
@@ -38,7 +26,7 @@ const Dashboard = () => {
       .get("/api/restaurants")
       .then((res) => setrestaurants(res.data))
       .catch((err) => console.log(err));
-  }, []);
+  }, [user]);
 
   const handleEdit = (restaurant) => {
     setToggle(!toggle);
@@ -49,6 +37,15 @@ const Dashboard = () => {
     //axios call here
 
   }
+  const handleFavorite = (r) =>{
+    // setFav(!fav)
+    let fav = !r.favorite
+    console.log("favorite rest", favoriteRestaurant)
+    //axios call put
+    updateRestaurant(r.id, {...r, favorite: fav}, props.history )
+    // window.location.reload();
+  }
+
   return (
     <>
       <HomeImgCont>
@@ -58,9 +55,9 @@ const Dashboard = () => {
         <br></br>
         <H3>Add a Restaurant</H3>
         <br></br>
-        <RestaurantForm addRestaurant={addRestaurant}/>
+        <RestaurantForm addRestaurant={addRestaurant} />
         <br></br>
-        <H3>My Menus</H3>
+        <H3>My Restaurants</H3>
         <br></br>
         <Container>
           <CardDeck>
@@ -71,17 +68,22 @@ const Dashboard = () => {
                   <Tl>
                     <Card.Body>
                       <Card.Title>
-                        <Link to={`/restaurants/${r.id}/menus`}>{r.name}</Link>
+                        <LinkColor to={`/restaurants/${r.id}/menus`}>{r.name}</LinkColor>
                       </Card.Title>
                       <Card.Text>{r.description}</Card.Text>
-
                       <GrayBtn onClick={() => deleteRestaurant(r.id)}>
                         <Icon.Trash />
                       </GrayBtn>
                       <GrayBtn onClick={() => handleEdit(r)}>
                         <Icon.PencilSquare />
                       </GrayBtn>
-                      
+                        <GrayBtn
+                          onClick={() => {
+                            handleFavorite(r)
+                          }}
+                        >
+                          <Icon.Star />
+                        </GrayBtn>
                     </Card.Body>
                   </Tl>
                 </Tst>
@@ -89,22 +91,23 @@ const Dashboard = () => {
             ))}
           </CardDeck>
         </Container>
-      <Modal show={toggle} onHide={handleHide}>
+        <Modal show={toggle} onHide={handleHide}>
           <Modal.Header closeButton>
             <Modal.Title>Edit Restaurant</Modal.Title>
           </Modal.Header>
-          <RestaurantForm  restaurantProp={editRestaurant}/>
+          <RestaurantForm restaurantProp={editRestaurant} />
           <br></br>
-      </Modal>
-    
+        </Modal>
         <br></br>
-        <h3>My Favorites</h3>
-      <footer>
-
-        <p> &#169 Copyright all rights reserved</p>
-      </footer>
+        <H3>My Favorites</H3>
+        <br></br>
+        <Container>
+        <FavoriteList  restaurants={restaurants}/>
+        </Container>
+        <Footer>
+          <P>© Copyright all rights reserved</P>
+        </Footer>
       </HomeImgCont>
-
     </>
   );
 };

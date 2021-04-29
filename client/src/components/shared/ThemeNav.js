@@ -1,14 +1,9 @@
-import React,{ useState, useEffect } from 'react';
+// import React,{ useState, useEffect } from 'react';
 import styled from 'styled-components';
 import LightTheme from '../../themes/Light';
-
 import {FiMoon, FiSun} from 'react-icons/fi';
 
-
 const ThemeNav = ({changeDark,changeLight,theme}) => {
-
-
-
 
   return (
     <div style={{display:'flex', margin:"15px",justifyContent:"flex-end"}}>
@@ -20,7 +15,7 @@ const ThemeNav = ({changeDark,changeLight,theme}) => {
         <CheckBox 
           id="checkbox" 
           type="checkbox"
-           onChange={theme == LightTheme ? changeDark:changeLight}/>
+           onChange={theme === LightTheme ? changeDark:changeLight}/>
         <CheckBoxLabel htmlFor="checkbox" />
       </CheckBoxWrapper>
       </div>

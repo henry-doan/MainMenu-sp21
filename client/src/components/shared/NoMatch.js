@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Btn, Container, QRImgCont, HomeIMG, H4 } from "../shared/StyledComponents";
+import { Btn, Container, HomeIMG, H4 } from "../shared/StyledComponents";
 import Logo from "../images/Logo.png";
 
 const NoMatch = () => {

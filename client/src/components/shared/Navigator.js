@@ -1,7 +1,7 @@
 import React from "react";
-import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+import { Navbar, Nav,} from "react-bootstrap";
 import LightTheme from "../../themes/Light";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { AuthConsumer } from "../../providers/AuthProvider";
 
 const Navigator = ({ theme, user, handleLogout, location, history }) => {
@@ -10,14 +10,15 @@ const Navigator = ({ theme, user, handleLogout, location, history }) => {
       <Navbar
         collapseOnSelect
         expand="lg"
-        bg={theme == LightTheme ? "light" : "dark"}
-        variant={theme == LightTheme ? "light" : "dark"}
+        bg={theme === LightTheme ? "light" : "dark"}
+        variant={theme === LightTheme ? "light" : "dark"}
       >
         <Navbar.Brand href="/">MainMenu</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="justify-content-end">
             <Nav.Link href="/">Dashboard</Nav.Link>
+            <Nav.Link href="/about">About Us</Nav.Link>
             <Nav.Link onClick={() => handleLogout(history)}>Logout</Nav.Link>
           </Nav>
         </Navbar.Collapse>
@@ -28,8 +29,8 @@ const Navigator = ({ theme, user, handleLogout, location, history }) => {
       <Navbar
         collapseOnSelect
         expand="lg"
-        bg={theme == LightTheme ? "light" : "dark"}
-        variant={theme == LightTheme ? "light" : "dark"}
+        bg={theme === LightTheme ? "light" : "dark"}
+        variant={theme === LightTheme ? "light" : "dark"}
       >
         <Navbar.Brand href="/">MainMenu</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -39,6 +40,7 @@ const Navigator = ({ theme, user, handleLogout, location, history }) => {
             <Nav.Link href="/register">Register</Nav.Link>
             <Nav.Link href="/login">Login</Nav.Link>
             <Nav.Link href="/menus">Menus</Nav.Link>
+            <Nav.Link href="/about">About Us</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

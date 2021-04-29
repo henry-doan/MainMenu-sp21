@@ -38,7 +38,7 @@ end
 
   private
     def restaurant_params
-      params.require(:restaurant).permit(:name, :image, :description)
+      params.require(:restaurant).permit(:name, :image, :description, :id, :user_id, :created_at, :updated_at, :favorite)
     end
      def set_restaurant
     @restaurant = Restaurant.find(params[:id])

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { AuthConsumer } from "../../providers/AuthProvider";
-import { Form, Image, Button } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { Container, Btn, IMG, LoginImgCont } from "../shared/StyledComponents";
 import Logo from "../images/Logo.png";
 

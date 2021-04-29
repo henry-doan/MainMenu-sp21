@@ -1,6 +1,6 @@
-import { useState, Component } from "react";
-import { Form, Button, Container } from "react-bootstrap";
-import { Btn, IMG, LoginImgCont } from "../shared/StyledComponents";
+import { useState } from "react";
+import { Form, Container } from "react-bootstrap";
+import { Btn } from "../shared/StyledComponents";
 import axios from "axios";
 
 const RestaurantForm = ({ restaurantProp, addRestaurant }) => {
@@ -10,14 +10,14 @@ const RestaurantForm = ({ restaurantProp, addRestaurant }) => {
           name: restaurantProp.name,
           image: restaurantProp.image,
           description: restaurantProp.description,
+          favorite: restaurantProp.favorite,
         }
-      : { name: "", image: "", description: "" }
+      : { name: "", image: "", description: "", favorite: false }
   );
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // addRestaurant(restaurant)
-    setRestaurant({ name: "", image: "", description: "" });
+    setRestaurant({ name: "", image: "", description: "" , favorite: false});
     if (restaurantProp) {
       handleUpdate();
     } else {
@@ -26,16 +26,17 @@ const RestaurantForm = ({ restaurantProp, addRestaurant }) => {
           name: restaurant.name,
           description: restaurant.description,
           image: restaurant.image,
+          favorite: restaurant.favorite
         })
         .then((res) => {
           // console.log(res)
+          window.location.reload();
         })
         .catch((err) => console.log(err));
     }
   };
 
   const handleChange = (e) => {
-    // console.log(restaurantProp.id);
     setRestaurant({
       ...restaurant,
       [e.target.name]: e.target.value,
@@ -48,9 +49,10 @@ const RestaurantForm = ({ restaurantProp, addRestaurant }) => {
         name: restaurant.name,
         description: restaurant.description,
         image: restaurant.image,
+        favorite: restaurant.favorite,
       })
       .then((res) => {
-        // console.log(res)
+        window.location.reload();
       })
       .catch((err) => console.log(err));
   };
