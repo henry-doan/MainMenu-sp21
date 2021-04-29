@@ -70,7 +70,7 @@ class ItemForm extends Component {
           value={image}
           onChange={this.handleChange}
           required
-          placeholder="Image URL"
+          placeholder="Image URL..."
         />
         <br></br>
         <Btn type="submit">Submit</Btn>
